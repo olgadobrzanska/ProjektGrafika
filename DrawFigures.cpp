@@ -22,13 +22,14 @@ void DrawFigures::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(**it);		
 }
 
-bool DrawFigures::LoadFromFile(DrawFigures* data, const std::string& filename)
+bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
 {
+	std::string filename = file->getText().toAnsiString();
 	if (!m_checkIfFileExists(filename))
 		return false;
 	std::ifstream loadedFile(filename.c_str());
 
-	data->m_loadedFigures.clear();
+	this->m_loadedFigures.clear();
 
 	sf::Drawable* addedFigure;
 
@@ -59,7 +60,7 @@ bool DrawFigures::LoadFromFile(DrawFigures* data, const std::string& filename)
 			continue;
 		}
 		addedFigure = figure(startX, startY, endX, endY, outR, outG, outB, inR, inG, inB, borderSize, opacity);
-		data->m_loadedFigures.push_back(addedFigure);
+		this->m_loadedFigures.push_back(addedFigure);
 	}
 
 	loadedFile.close();

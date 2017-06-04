@@ -4,7 +4,7 @@ class DrawFigures : public sf::Drawable
 {
 public:
 	DrawFigures();
-	static bool LoadFromFile(DrawFigures* data, const std::string& filename);
+	bool LoadFromFile(tgui::EditBox::Ptr file);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	~DrawFigures();
 private:
