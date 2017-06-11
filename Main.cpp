@@ -28,6 +28,12 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1000, 600), "SFML works!", sf::Style::Titlebar | sf::Style::Close);
 	tgui::Gui gui(window);
 	DrawFigures loadedData;
+	sf::RectangleShape borderBox(sf::Vector2f(200., 0.));
+	borderBox.setOutlineColor(sf::Color::Black);
+	borderBox.setOutlineThickness(0.);
+	borderBox.setFillColor(sf::Color::White);
+	borderBox.setPosition(198., 0.);
+	borderBox.setSize(sf::Vector2f(802., 600.));
 	try
 	{
 		loadGui(gui, loadedData);
@@ -50,7 +56,8 @@ int main()
 			gui.handleEvent(event);
 		}
 
-		window.clear(sf::Color::White);
+		window.clear();
+		window.draw(borderBox);
 		window.draw(loadedData);
 		gui.draw();
 		window.display();
