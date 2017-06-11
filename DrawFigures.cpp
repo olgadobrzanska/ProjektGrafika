@@ -79,7 +79,7 @@ bool DrawFigures::m_isCorrectSizeOfVector(const std::vector<int>& data)
 {
 	if (data.size() == 0)
 		return false;
-	int expectedSize;
+	int expectedSize = -1;
 	switch (data[0])
 	{
 	case CIRCLE:
