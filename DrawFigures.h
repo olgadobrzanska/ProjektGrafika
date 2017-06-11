@@ -9,6 +9,7 @@ public:
 	~DrawFigures();
 	enum { CIRCLE = 1, RECTANGLE = 2, LINE = 3 };
 	int GetCountOfElements() const { return m_loadedFigures.size(); }
+	int GetFigureType(const int& index) const;
 	int GetOutlineR(const int& index) const;
 	void SetOutlineR(int value, const int& index);
 	int GetOutlineG(const int& index) const;

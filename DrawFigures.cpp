@@ -23,6 +23,11 @@ void DrawFigures::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(**it);		
 }
 
+int DrawFigures::GetFigureType(const int& index) const
+{
+	return m_loadedfigures_data[index][0];
+}
+
 int DrawFigures::GetOutlineR(const int& index) const
 {
 	return m_loadedfigures_data[index][1];
@@ -32,7 +37,11 @@ void DrawFigures::SetOutlineR(int value, const int& index)
 {
 	m_loadedfigures_data[index][1] = value;
 	sf::Color color(m_loadedfigures_data[index][1], m_loadedfigures_data[index][2], m_loadedfigures_data[index][3]);
+	/*switch (m_loadedfigures_data[index][0])
+	{
+	case CIRCLE:
 
+	}*/
 }
 
 int DrawFigures::GetOutlineG(const int& index) const
