@@ -1,5 +1,7 @@
 #pragma once
 
+typedef sf::Drawable* (*drawingFunctionPointer)(std::vector<int>&);
+
 class DrawFigures : public sf::Drawable
 {
 public:
@@ -42,4 +44,5 @@ private:
 	static sf::Drawable* m_addLine(std::vector<int>& data);
 	static sf::Drawable* m_addCircle(std::vector<int>& data);
 	static sf::Drawable* m_addRectangle(std::vector<int>& data);
+	static drawingFunctionPointer m_getDrawingFunction(int figureType);
 };
