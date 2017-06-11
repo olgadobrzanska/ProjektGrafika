@@ -98,29 +98,44 @@ void DrawFigures::SetInB(int value, const int& index)
 
 int DrawFigures::GetBorderSize(const int& index) const
 {
-	return m_loadedfigures_data[index][7];
+	int borderIndex = 7;
+	if (m_loadedfigures_data[index][0] == LINE)
+		borderIndex -= 3;
+	return m_loadedfigures_data[index][borderIndex];
 }
 
 void DrawFigures::SetBorderSize(int value, const int& index)
 {
-	m_loadedfigures_data[index][7] = value;
+	int borderIndex = 7;
+	if (m_loadedfigures_data[index][0] == LINE)
+		borderIndex -= 3;
+	m_loadedfigures_data[index][borderIndex] = value;
 	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetOpacity(const int& index) const
 {
-	return m_loadedfigures_data[index][8];
+	int opacityIndex = 8;
+	if (m_loadedfigures_data[index][0] == LINE)
+		opacityIndex -= 3;
+	return m_loadedfigures_data[index][opacityIndex];
 }
 
 void DrawFigures::SetOpacity(int value, const int& index)
 {
-	m_loadedfigures_data[index][8] = value;
+	int opacityIndex = 8;
+	if (m_loadedfigures_data[index][0] == LINE)
+		opacityIndex -= 3;
+	m_loadedfigures_data[index][opacityIndex] = value;
 	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetPointX(const int& index, const int& pointNo) const
 {
-	return m_loadedfigures_data[index][9 + pointNo * 2];
+	int xIndex = 9;
+	if (m_loadedfigures_data[index][0] == LINE)
+		xIndex -= 3;
+	return m_loadedfigures_data[index][xIndex + pointNo * 2];
 }
 
 void DrawFigures::SetPointX(int value, const int& index)
@@ -130,7 +145,10 @@ void DrawFigures::SetPointX(int value, const int& index)
 
 int DrawFigures::GetPointY(const int& index, const int& pointNo) const
 {
-	return m_loadedfigures_data[index][10 + pointNo * 2];
+	int yIndex = 10;
+	if (m_loadedfigures_data[index][0] == LINE)
+		yIndex -= 3;
+	return m_loadedfigures_data[index][yIndex + pointNo * 2];
 }
 
 void DrawFigures::SetPointY(int value, const int& index)
