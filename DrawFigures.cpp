@@ -23,7 +23,12 @@ void DrawFigures::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(**it);		
 }
 
-int DrawFigures::GetOutlineR(const int& index) const 
+int DrawFigures::GetFigureType(const int& index) const
+{
+	return m_loadedfigures_data[index][0];
+}
+
+int DrawFigures::GetOutlineR(const int& index) const
 {
 	return m_loadedfigures_data[index][1];
 }
@@ -32,7 +37,11 @@ void DrawFigures::SetOutlineR(int value, const int& index)
 {
 	m_loadedfigures_data[index][1] = value;
 	sf::Color color(m_loadedfigures_data[index][1], m_loadedfigures_data[index][2], m_loadedfigures_data[index][3]);
+	/*switch (m_loadedfigures_data[index][0])
+	{
+	case CIRCLE:
 
+	}*/
 }
 
 int DrawFigures::GetOutlineG(const int& index) const
@@ -86,7 +95,7 @@ void DrawFigures::SetInB(int value, const int& index)
 	
 }
 
-int DrawFigures::GetBorderSize(const int& index) const  
+int DrawFigures::GetBorderSize(const int& index) const
 {
 	return m_loadedfigures_data[index][7];
 }
@@ -96,7 +105,7 @@ void DrawFigures::SetBorderSize(int value, const int& index)
 	
 }
 
-int DrawFigures::GetOpacity(const int& index) const 
+int DrawFigures::GetOpacity(const int& index) const
 {
 	return m_loadedfigures_data[index][8];
 }
