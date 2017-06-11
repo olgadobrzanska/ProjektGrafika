@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include "Main.h"
 #include <fstream>
 
@@ -36,12 +37,7 @@ int DrawFigures::GetOutlineR(const int& index) const
 void DrawFigures::SetOutlineR(int value, const int& index)
 {
 	m_loadedfigures_data[index][1] = value;
-	sf::Color color(m_loadedfigures_data[index][1], m_loadedfigures_data[index][2], m_loadedfigures_data[index][3]);
-	/*switch (m_loadedfigures_data[index][0])
-	{
-	case CIRCLE:
-
-	}*/
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetOutlineG(const int& index) const
@@ -51,7 +47,8 @@ int DrawFigures::GetOutlineG(const int& index) const
 
 void DrawFigures::SetOutlineG(int value, const int& index)
 {
-	
+	m_loadedfigures_data[index][2] = value;
+	m_updateDrawableTable(index);
 }
 
 
@@ -62,7 +59,8 @@ int DrawFigures::GetOutlineB(const int& index) const
 
 void DrawFigures::SetOutlineB(int value, const int& index)
 {
-	
+	m_loadedfigures_data[index][3] = value;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetInR(const int& index) const
@@ -72,7 +70,8 @@ int DrawFigures::GetInR(const int& index) const
 
 void DrawFigures::SetInR(int value, const int& index)
 {
-	
+	m_loadedfigures_data[index][4] = value;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetInG(const int& index) const
@@ -82,7 +81,8 @@ int DrawFigures::GetInG(const int& index) const
 
 void DrawFigures::SetInG(int value, const int& index)
 {
-	
+	m_loadedfigures_data[index][5] = value;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetInB(const int& index) const
@@ -92,7 +92,8 @@ int DrawFigures::GetInB(const int& index) const
 
 void DrawFigures::SetInB(int value, const int& index)
 {
-	
+	m_loadedfigures_data[index][6] = value;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetBorderSize(const int& index) const
@@ -102,7 +103,8 @@ int DrawFigures::GetBorderSize(const int& index) const
 
 void DrawFigures::SetBorderSize(int value, const int& index)
 {
-	
+	m_loadedfigures_data[index][7] = value;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetOpacity(const int& index) const
@@ -112,7 +114,8 @@ int DrawFigures::GetOpacity(const int& index) const
 
 void DrawFigures::SetOpacity(int value, const int& index)
 {
-	
+	m_loadedfigures_data[index][8] = value;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetPointX(const int& index, const int& pointNo) const
@@ -134,6 +137,14 @@ void DrawFigures::SetPointY(int value, const int& index)
 {
 	
 }
+
+int DrawFigures::GetVertexCount(const int& index) const
+{
+	if (m_loadedfigures_data[index][0] == LINE)
+		return 2;
+	return (m_loadedfigures_data[index].size() - 9) / 2;
+}
+
 
 bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
 {
@@ -157,23 +168,11 @@ bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
 		if (!m_isCorrectSizeOfVector(data))
 			continue;
 
-		switch (data[0])
-		{
-		case CIRCLE:
-			addedFigure = m_addCircle(data);
-			break;
-		case RECTANGLE:
-			addedFigure = m_addRectangle(data);
-			break;
-		case LINE:
-			addedFigure = m_addLine(data);
-			break;
-		default:
-			continue;
-		}
+		this->m_loadedfigures_data.push_back(data);
+
+		addedFigure = m_getDrawingFunction(data[0])(data);
 
 		this->m_loadedFigures.push_back(addedFigure);
-		this->m_loadedfigures_data.push_back(data);
 	}
 
 	loadedFile.close();
@@ -212,18 +211,26 @@ bool DrawFigures::m_isCorrectSizeOfVector(const std::vector<int>& data)
 
 sf::Drawable* DrawFigures::m_addLine(std::vector<int>& data)
 {
+	if (data[7] > data[9])
+		std::swap(data[7], data[9]);
 	int colorR = data[1], colorG = data[2], colorB = data[3];
 	int borderSize = data[4], opacity = data[5];
 	int startX = data[6], startY = data[7], endX = data[8], endY = data[9];
 	sf::RectangleShape* line = new sf::RectangleShape;
 	line->setPosition((float)(m_xOffset + startX), (float)(m_yOffset + startY));
-	line->setSize(sf::Vector2f((float)(endX - startX), 1.));
+	line->setSize(sf::Vector2f((float)(std::sqrt((endX - startX)*(endX-startX)+(endY-startY)*(endY-startY))), 1.));
 	line->setOutlineColor(sf::Color(colorR, colorG, colorB, opacity));
 	line->setFillColor(sf::Color(colorR, colorG, colorB, opacity));
 	line->setOutlineThickness((float)(borderSize-1));
 
 	// TODO: Obliczanie rotacji na podstawie endX i endY
 	//line->setRotation()
+	if (endX - startX == 0)
+		line->setRotation(90);
+	else
+		line->setRotation(atan(1.*(endY - startY) / (endX - startX)) * 180. / M_PI);
+
+
 
 
 	Drawable* addedLine = line;
@@ -263,4 +270,31 @@ sf::Drawable* DrawFigures::m_addRectangle(std::vector<int>& data)
 
 	Drawable* addedRectangle = rectangle;
 	return addedRectangle;
+}
+
+drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figureType)
+{
+	drawingFunctionPointer fp;
+	switch (figureType)
+	{
+	case CIRCLE:
+		fp = m_addCircle;
+		break;
+	case RECTANGLE:
+		fp = m_addRectangle;
+		break;
+	case LINE:
+		fp = m_addLine;
+		break;
+	default:
+		fp = m_addCircle;
+	}
+	return fp;
+}
+
+void DrawFigures::m_updateDrawableTable(const int& index)
+{
+	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
+	std::swap(newItem, m_loadedFigures[index]);
+	delete newItem;
 }

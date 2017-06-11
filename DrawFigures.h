@@ -1,5 +1,7 @@
 #pragma once
 
+typedef sf::Drawable* (*drawingFunctionPointer)(std::vector<int>&);
+
 class DrawFigures : public sf::Drawable
 {
 public:
@@ -30,6 +32,7 @@ public:
 	void SetPointX(int value, const int& index);
 	int GetPointY(const int& index, const int& pointNo) const;
 	void SetPointY(int value, const int& index);
+	int GetVertexCount(const int& index) const;
 private:
 	std::vector<sf::Drawable*> m_loadedFigures;
 	std::vector<std::vector<int> > m_loadedfigures_data;
@@ -42,4 +45,6 @@ private:
 	static sf::Drawable* m_addLine(std::vector<int>& data);
 	static sf::Drawable* m_addCircle(std::vector<int>& data);
 	static sf::Drawable* m_addRectangle(std::vector<int>& data);
+	static drawingFunctionPointer m_getDrawingFunction(int figureType);
+	void m_updateDrawableTable(const int& index);
 };
