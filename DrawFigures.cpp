@@ -28,14 +28,32 @@ int DrawFigures::GetOutlineR(const int& index) const
 	return m_loadedfigures_data[index][1];
 }
 
+void DrawFigures::SetOutlineR(int value, const int& index)
+{
+	m_loadedfigures_data[index][1] = value;
+	sf::Color color(m_loadedfigures_data[index][1], m_loadedfigures_data[index][2], m_loadedfigures_data[index][3]);
+
+}
+
 int DrawFigures::GetOutlineG(const int& index) const
 {
 	return m_loadedfigures_data[index][2];
 }
 
+void DrawFigures::SetOutlineG(int value, const int& index)
+{
+	
+}
+
+
 int DrawFigures::GetOutlineB(const int& index) const
 {
 	return m_loadedfigures_data[index][3];
+}
+
+void DrawFigures::SetOutlineB(int value, const int& index)
+{
+	
 }
 
 int DrawFigures::GetInR(const int& index) const
@@ -43,16 +61,29 @@ int DrawFigures::GetInR(const int& index) const
 	return m_loadedfigures_data[index][4];
 }
 
+void DrawFigures::SetInR(int value, const int& index)
+{
+	
+}
 
 int DrawFigures::GetInG(const int& index) const
 {
 	return m_loadedfigures_data[index][5];
 }
 
+void DrawFigures::SetInG(int value, const int& index)
+{
+	
+}
 
 int DrawFigures::GetInB(const int& index) const
 {
 	return m_loadedfigures_data[index][6];
+}
+
+void DrawFigures::SetInB(int value, const int& index)
+{
+	
 }
 
 int DrawFigures::GetBorderSize(const int& index) const
@@ -60,9 +91,19 @@ int DrawFigures::GetBorderSize(const int& index) const
 	return m_loadedfigures_data[index][7];
 }
 
+void DrawFigures::SetBorderSize(int value, const int& index)
+{
+	
+}
+
 int DrawFigures::GetOpacity(const int& index) const
 {
 	return m_loadedfigures_data[index][8];
+}
+
+void DrawFigures::SetOpacity(int value, const int& index)
+{
+	
 }
 
 int DrawFigures::GetPointX(const int& index, const int& pointNo) const
@@ -70,9 +111,19 @@ int DrawFigures::GetPointX(const int& index, const int& pointNo) const
 	return m_loadedfigures_data[index][9 + pointNo * 2];
 }
 
+void DrawFigures::SetPointX(int value, const int& index)
+{
+	
+}
+
 int DrawFigures::GetPointY(const int& index, const int& pointNo) const
 {
 	return m_loadedfigures_data[index][10 + pointNo * 2];
+}
+
+void DrawFigures::SetPointY(int value, const int& index)
+{
+	
 }
 
 bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
