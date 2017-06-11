@@ -7,6 +7,7 @@ int DrawFigures::m_yOffset = 5;
 DrawFigures::DrawFigures()
 {
 	m_loadedFigures.clear();
+	m_loadedfigures_data.clear();
 }
 
 DrawFigures::~DrawFigures()
@@ -20,6 +21,58 @@ void DrawFigures::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (std::vector<sf::Drawable*>::const_iterator it = m_loadedFigures.begin(); it != m_loadedFigures.end(); ++it)
 		target.draw(**it);		
+}
+
+int DrawFigures::GetOutlineR(const int& index) const
+{
+	return m_loadedfigures_data[index][1];
+}
+
+int DrawFigures::GetOutlineG(const int& index) const
+{
+	return m_loadedfigures_data[index][2];
+}
+
+int DrawFigures::GetOutlineB(const int& index) const
+{
+	return m_loadedfigures_data[index][3];
+}
+
+int DrawFigures::GetInR(const int& index) const
+{
+	return m_loadedfigures_data[index][4];
+}
+
+
+int DrawFigures::GetInG(const int& index) const
+{
+	return m_loadedfigures_data[index][5];
+}
+
+
+int DrawFigures::GetInB(const int& index) const
+{
+	return m_loadedfigures_data[index][6];
+}
+
+int DrawFigures::GetBorderSize(const int& index) const
+{
+	return m_loadedfigures_data[index][7];
+}
+
+int DrawFigures::GetOpacity(const int& index) const
+{
+	return m_loadedfigures_data[index][8];
+}
+
+int DrawFigures::GetPointX(const int& index, const int& pointNo) const
+{
+	return m_loadedfigures_data[index][9 + pointNo * 2];
+}
+
+int DrawFigures::GetPointY(const int& index, const int& pointNo) const
+{
+	return m_loadedfigures_data[index][10 + pointNo * 2];
 }
 
 bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
@@ -60,6 +113,7 @@ bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
 		}
 
 		this->m_loadedFigures.push_back(addedFigure);
+		this->m_loadedfigures_data.push_back(data);
 	}
 
 	loadedFile.close();
