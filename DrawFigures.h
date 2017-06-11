@@ -32,6 +32,7 @@ public:
 	void SetPointX(int value, const int& index);
 	int GetPointY(const int& index, const int& pointNo) const;
 	void SetPointY(int value, const int& index);
+	int GetVertexCount(const int& index) const;
 private:
 	std::vector<sf::Drawable*> m_loadedFigures;
 	std::vector<std::vector<int> > m_loadedfigures_data;

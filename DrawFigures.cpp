@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include "Main.h"
 #include <fstream>
 
@@ -137,6 +138,14 @@ void DrawFigures::SetPointY(int value, const int& index)
 	
 }
 
+int DrawFigures::GetVertexCount(const int& index) const
+{
+	if (m_loadedfigures_data[index][0] == LINE)
+		return 2;
+	return (m_loadedfigures_data[index].size() - 9) / 2;
+}
+
+
 bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
 {
 	std::string filename = file->getText().toAnsiString();
@@ -202,18 +211,26 @@ bool DrawFigures::m_isCorrectSizeOfVector(const std::vector<int>& data)
 
 sf::Drawable* DrawFigures::m_addLine(std::vector<int>& data)
 {
+	if (data[7] > data[9])
+		std::swap(data[7], data[9]);
 	int colorR = data[1], colorG = data[2], colorB = data[3];
 	int borderSize = data[4], opacity = data[5];
 	int startX = data[6], startY = data[7], endX = data[8], endY = data[9];
 	sf::RectangleShape* line = new sf::RectangleShape;
 	line->setPosition((float)(m_xOffset + startX), (float)(m_yOffset + startY));
-	line->setSize(sf::Vector2f((float)(endX - startX), 1.));
+	line->setSize(sf::Vector2f((float)(std::sqrt((endX - startX)*(endX-startX)+(endY-startY)*(endY-startY))), 1.));
 	line->setOutlineColor(sf::Color(colorR, colorG, colorB, opacity));
 	line->setFillColor(sf::Color(colorR, colorG, colorB, opacity));
 	line->setOutlineThickness((float)(borderSize-1));
 
 	// TODO: Obliczanie rotacji na podstawie endX i endY
 	//line->setRotation()
+	if (endX - startX == 0)
+		line->setRotation(90);
+	else
+		line->setRotation(atan(1.*(endY - startY) / (endX - startX)) * 180. / M_PI);
+
+
 
 
 	Drawable* addedLine = line;
