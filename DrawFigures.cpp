@@ -36,9 +36,7 @@ int DrawFigures::GetOutlineR(const int& index) const
 void DrawFigures::SetOutlineR(int value, const int& index)
 {
 	m_loadedfigures_data[index][1] = value;
-	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
-	std::swap(newItem, m_loadedFigures[index]);
-	delete newItem;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetOutlineG(const int& index) const
@@ -49,9 +47,7 @@ int DrawFigures::GetOutlineG(const int& index) const
 void DrawFigures::SetOutlineG(int value, const int& index)
 {
 	m_loadedfigures_data[index][2] = value;
-	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
-	std::swap(newItem, m_loadedFigures[index]);
-	delete newItem;
+	m_updateDrawableTable(index);
 }
 
 
@@ -63,9 +59,7 @@ int DrawFigures::GetOutlineB(const int& index) const
 void DrawFigures::SetOutlineB(int value, const int& index)
 {
 	m_loadedfigures_data[index][3] = value;
-	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
-	std::swap(newItem, m_loadedFigures[index]);
-	delete newItem;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetInR(const int& index) const
@@ -76,9 +70,7 @@ int DrawFigures::GetInR(const int& index) const
 void DrawFigures::SetInR(int value, const int& index)
 {
 	m_loadedfigures_data[index][4] = value;
-	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
-	std::swap(newItem, m_loadedFigures[index]);
-	delete newItem;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetInG(const int& index) const
@@ -89,9 +81,7 @@ int DrawFigures::GetInG(const int& index) const
 void DrawFigures::SetInG(int value, const int& index)
 {
 	m_loadedfigures_data[index][5] = value;
-	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
-	std::swap(newItem, m_loadedFigures[index]);
-	delete newItem;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetInB(const int& index) const
@@ -102,9 +92,7 @@ int DrawFigures::GetInB(const int& index) const
 void DrawFigures::SetInB(int value, const int& index)
 {
 	m_loadedfigures_data[index][6] = value;
-	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
-	std::swap(newItem, m_loadedFigures[index]);
-	delete newItem;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetBorderSize(const int& index) const
@@ -115,9 +103,7 @@ int DrawFigures::GetBorderSize(const int& index) const
 void DrawFigures::SetBorderSize(int value, const int& index)
 {
 	m_loadedfigures_data[index][7] = value;
-	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
-	std::swap(newItem, m_loadedFigures[index]);
-	delete newItem;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetOpacity(const int& index) const
@@ -128,9 +114,7 @@ int DrawFigures::GetOpacity(const int& index) const
 void DrawFigures::SetOpacity(int value, const int& index)
 {
 	m_loadedfigures_data[index][8] = value;
-	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
-	std::swap(newItem, m_loadedFigures[index]);
-	delete newItem;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetPointX(const int& index, const int& pointNo) const
@@ -175,26 +159,9 @@ bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
 		if (!m_isCorrectSizeOfVector(data))
 			continue;
 
-		sf::Drawable* (*f)(std::vector<int>&);
-
-		switch (data[0])
-		{
-		case CIRCLE:
-			f = m_addCircle;
-			break;
-		case RECTANGLE:
-			f = m_addRectangle;
-			break;
-		case LINE:
-			f = m_addLine;
-			break;
-		default:
-			continue;
-		}
-
 		this->m_loadedfigures_data.push_back(data);
 
-		addedFigure = f(data);
+		addedFigure = m_getDrawingFunction(data[0])(data);
 
 		this->m_loadedFigures.push_back(addedFigure);
 	}
@@ -306,4 +273,11 @@ drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figureType)
 		fp = m_addCircle;
 	}
 	return fp;
+}
+
+void DrawFigures::m_updateDrawableTable(const int& index)
+{
+	sf::Drawable* newItem = m_getDrawingFunction(m_loadedfigures_data[index][0])(m_loadedfigures_data[index]);
+	std::swap(newItem, m_loadedFigures[index]);
+	delete newItem;
 }

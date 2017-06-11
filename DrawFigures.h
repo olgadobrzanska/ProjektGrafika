@@ -45,4 +45,5 @@ private:
 	static sf::Drawable* m_addCircle(std::vector<int>& data);
 	static sf::Drawable* m_addRectangle(std::vector<int>& data);
 	static drawingFunctionPointer m_getDrawingFunction(int figureType);
+	void m_updateDrawableTable(const int& index);
 };
