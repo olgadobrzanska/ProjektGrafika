@@ -35,8 +35,8 @@ int main()
 	borderBox.setFillColor(sf::Color::White);
 	borderBox.setPosition(198., 0.);
 	borderBox.setSize(sf::Vector2f(802., 600.));
-
-	Gui::preparePanel(gui, loadedData);
+	Gui::Panel newPanel(gui, loadedData);
+	newPanel.preparePanel();
 	try
 	{
 		loadGui(gui, loadedData);
@@ -63,6 +63,7 @@ int main()
 		window.draw(borderBox);
 		window.draw(loadedData);
 		gui.draw();
+		newPanel.updatePanel();
 		window.display();
 	}
 
