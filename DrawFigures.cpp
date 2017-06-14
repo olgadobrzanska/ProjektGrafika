@@ -321,7 +321,7 @@ sf::Drawable* DrawFigures::m_addPolygon(std::vector<int>& data)
 	return addedPolygon;
 }
 
-drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figureType)
+DrawFigures::drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figureType)
 {
 	drawingFunctionPointer fp;
 	switch (figureType)
