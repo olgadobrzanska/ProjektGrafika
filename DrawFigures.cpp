@@ -109,6 +109,7 @@ void DrawFigures::SetBorderSize(int value, const int& index)
 	int borderIndex = 7;
 	if (m_loadedfigures_data[index][0] == LINE)
 		borderIndex -= 3;
+	if (value < 0) value = 0;
 	m_loadedfigures_data[index][borderIndex] = value;
 	m_updateDrawableTable(index);
 }
@@ -138,9 +139,13 @@ int DrawFigures::GetPointX(const int& index, const int& pointNo) const
 	return m_loadedfigures_data[index][xIndex + pointNo * 2];
 }
 
-void DrawFigures::SetPointX(int value, const int& index)
+void DrawFigures::SetPointX(int value, const int& index, const int& pointNo)
 {
-	
+	int xIndex = 9;
+	if (m_loadedfigures_data[index][0] == LINE)
+		xIndex -= 3;
+	m_loadedfigures_data[index][xIndex + pointNo * 2] = value;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetPointY(const int& index, const int& pointNo) const
@@ -151,9 +156,13 @@ int DrawFigures::GetPointY(const int& index, const int& pointNo) const
 	return m_loadedfigures_data[index][yIndex + pointNo * 2];
 }
 
-void DrawFigures::SetPointY(int value, const int& index)
+void DrawFigures::SetPointY(int value, const int& index, const int& pointNo)
 {
-	
+	int yIndex = 10;
+	if (m_loadedfigures_data[index][0] == LINE)
+		yIndex -= 3;
+	m_loadedfigures_data[index][yIndex + pointNo * 2] = value;
+	m_updateDrawableTable(index);
 }
 
 int DrawFigures::GetVertexCount(const int& index) const
@@ -222,6 +231,8 @@ bool DrawFigures::m_isCorrectSizeOfVector(const std::vector<int>& data)
 	case LINE:
 		expectedSize = 10;
 		break;
+	case POLYGON:
+		return data.size()-13 >= 0 && (data.size() - 13) % 2 == 0;
 	}
 	return expectedSize == data.size();
 }
@@ -231,8 +242,8 @@ sf::Drawable* DrawFigures::m_addLine(std::vector<int>& data)
 {
 	if (data[7] > data[9])
 		std::swap(data[7], data[9]);
-	int colorR = data[1], colorG = data[2], colorB = data[3];
-	int borderSize = data[4], opacity = data[5];
+	int colorR = m_proper_value_0_255(data[1]), colorG = m_proper_value_0_255(data[2]), colorB = m_proper_value_0_255(data[3]);
+	int borderSize = data[4], opacity = m_proper_value_0_255(data[5]);
 	int startX = data[6], startY = data[7], endX = data[8], endY = data[9];
 	sf::RectangleShape* line = new sf::RectangleShape;
 	line->setPosition((float)(m_xOffset + startX), (float)(m_yOffset + startY));
@@ -241,8 +252,6 @@ sf::Drawable* DrawFigures::m_addLine(std::vector<int>& data)
 	line->setFillColor(sf::Color(colorR, colorG, colorB, opacity));
 	line->setOutlineThickness((float)(borderSize-1));
 
-	// TODO: Obliczanie rotacji na podstawie endX i endY
-	//line->setRotation()
 	if (endX - startX == 0)
 		line->setRotation(90);
 	else
@@ -257,9 +266,9 @@ sf::Drawable* DrawFigures::m_addLine(std::vector<int>& data)
 
 sf::Drawable* DrawFigures::m_addCircle(std::vector<int>& data)
 {
-	int colorR = data[1], colorG = data[2], colorB = data[3];
-	int insideR = data[4], insideG = data[5], insideB = data[6];
-	int borderSize = data[7], opacity = data[8];
+	int colorR = m_proper_value_0_255(data[1]), colorG = m_proper_value_0_255(data[2]), colorB = m_proper_value_0_255(data[3]);
+	int insideR = m_proper_value_0_255(data[4]), insideG = m_proper_value_0_255(data[5]), insideB = m_proper_value_0_255(data[6]);
+	int borderSize = data[7], opacity = m_proper_value_0_255(data[8]);
 	int startX = data[9], startY = data[10], endX = data[11], endY = data[12];
 	sf::CircleShape* circle = new sf::CircleShape();
 	circle->setOutlineColor(sf::Color(colorR, colorG, colorB, opacity));
@@ -275,9 +284,9 @@ sf::Drawable* DrawFigures::m_addCircle(std::vector<int>& data)
 
 sf::Drawable* DrawFigures::m_addRectangle(std::vector<int>& data)
 {
-	int colorR = data[1], colorG = data[2], colorB = data[3];
-	int insideR = data[4], insideG = data[5], insideB = data[6];
-	int borderSize = data[7], opacity = data[8];
+	int colorR = m_proper_value_0_255(data[1]), colorG = m_proper_value_0_255(data[2]), colorB = m_proper_value_0_255(data[3]);
+	int insideR = m_proper_value_0_255(data[4]), insideG = m_proper_value_0_255(data[5]), insideB = m_proper_value_0_255(data[6]);
+	int borderSize = data[7], opacity = m_proper_value_0_255(data[8]);
 	int startX = data[9], startY = data[10], endX = data[11], endY = data[12];
 	sf::RectangleShape* rectangle = new sf::RectangleShape;
 	rectangle->setPosition((float)(m_xOffset + startX), (float)(m_yOffset + startY));
@@ -290,7 +299,29 @@ sf::Drawable* DrawFigures::m_addRectangle(std::vector<int>& data)
 	return addedRectangle;
 }
 
-drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figureType)
+sf::Drawable* DrawFigures::m_addPolygon(std::vector<int>& data)
+{
+	int pointCount = GetVertexCount(data);
+	sf::ConvexShape* polygon = new sf::ConvexShape(pointCount);
+	int colorR = m_proper_value_0_255(data[1]), colorG = m_proper_value_0_255(data[2]), colorB = m_proper_value_0_255(data[3]);
+	int insideR = m_proper_value_0_255(data[4]), insideG = m_proper_value_0_255(data[5]), insideB = m_proper_value_0_255(data[6]);
+	int borderSize = data[7], opacity = m_proper_value_0_255(data[8]);
+	
+	for (int i = 0; i < pointCount; i++)
+	{
+		const sf::Vector2f point((float)(data[9 + 2 * i]-data[9]), (float)(data[10 + 2 * i]-data[10]));
+		polygon->setPoint(i, point);
+	}
+	polygon->setOutlineColor(sf::Color(colorR, colorG, colorB, opacity));
+	polygon->setFillColor(sf::Color(insideR, insideG, insideB, opacity));
+	polygon->setOutlineThickness((float)borderSize);
+	polygon->setPosition((float)(m_xOffset + data[9]), (float)(m_yOffset + data[10]));
+
+	sf::Drawable* addedPolygon = polygon;
+	return addedPolygon;
+}
+
+DrawFigures::drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figureType)
 {
 	drawingFunctionPointer fp;
 	switch (figureType)
@@ -303,6 +334,9 @@ drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figureType)
 		break;
 	case LINE:
 		fp = m_addLine;
+		break;
+	case POLYGON:
+		fp = m_addPolygon;
 		break;
 	default:
 		fp = m_addCircle;
