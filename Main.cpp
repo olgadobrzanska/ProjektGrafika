@@ -8,7 +8,7 @@ void loadGui(tgui::Gui& gui, DrawFigures& loadedData)
 	tgui::EditBox::Ptr loadFromFilename = theme->load("Editbox");
 	loadFromFilename->setSize(140, 30);
 	loadFromFilename->setPosition(5, 5);
-	loadFromFilename->setText("File name");
+	loadFromFilename->setDefaultText("File name");
 	loadFromFilename->setTextSize(14);
 	gui.add(loadFromFilename, "loadFromFilename");
 
@@ -19,7 +19,6 @@ void loadGui(tgui::Gui& gui, DrawFigures& loadedData)
 	gui.add(loadFromSubmit, "loadFromSubmit");
 
 	loadFromSubmit->connect("pressed", &DrawFigures::LoadFromFile, &loadedData, loadFromFilename);
-	loadFromFilename->connect("clicked", Gui::onLoadFromFilePressed, loadFromFilename);
 	
 }
 

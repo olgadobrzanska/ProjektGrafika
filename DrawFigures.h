@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics/Drawable.hpp>
 
 class DrawFigures : public sf::Drawable
 {

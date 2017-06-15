@@ -36,7 +36,7 @@ int DrawFigures::GetOutlineR(const int& index) const
 
 void DrawFigures::SetOutlineR(int value, const int& index)
 {
-	m_loadedfigures_data[index][1] = value;
+	m_loadedfigures_data[index][1] = m_proper_value_0_255(value);
 	m_updateDrawableTable(index);
 }
 
@@ -47,7 +47,7 @@ int DrawFigures::GetOutlineG(const int& index) const
 
 void DrawFigures::SetOutlineG(int value, const int& index)
 {
-	m_loadedfigures_data[index][2] = value;
+	m_loadedfigures_data[index][2] = m_proper_value_0_255(value);
 	m_updateDrawableTable(index);
 }
 
@@ -59,7 +59,7 @@ int DrawFigures::GetOutlineB(const int& index) const
 
 void DrawFigures::SetOutlineB(int value, const int& index)
 {
-	m_loadedfigures_data[index][3] = value;
+	m_loadedfigures_data[index][3] = m_proper_value_0_255(value);
 	m_updateDrawableTable(index);
 }
 
@@ -70,7 +70,7 @@ int DrawFigures::GetInR(const int& index) const
 
 void DrawFigures::SetInR(int value, const int& index)
 {
-	m_loadedfigures_data[index][4] = value;
+	m_loadedfigures_data[index][4] = m_proper_value_0_255(value);
 	m_updateDrawableTable(index);
 }
 
@@ -81,7 +81,7 @@ int DrawFigures::GetInG(const int& index) const
 
 void DrawFigures::SetInG(int value, const int& index)
 {
-	m_loadedfigures_data[index][5] = value;
+	m_loadedfigures_data[index][5] = m_proper_value_0_255(value);
 	m_updateDrawableTable(index);
 }
 
@@ -92,7 +92,7 @@ int DrawFigures::GetInB(const int& index) const
 
 void DrawFigures::SetInB(int value, const int& index)
 {
-	m_loadedfigures_data[index][6] = value;
+	m_loadedfigures_data[index][6] = m_proper_value_0_255(value);
 	m_updateDrawableTable(index);
 }
 
@@ -127,7 +127,7 @@ void DrawFigures::SetOpacity(int value, const int& index)
 	int opacityIndex = 8;
 	if (m_loadedfigures_data[index][0] == LINE)
 		opacityIndex -= 3;
-	m_loadedfigures_data[index][opacityIndex] = value;
+	m_loadedfigures_data[index][opacityIndex] = m_proper_value_0_255(value);
 	m_updateDrawableTable(index);
 }
 
@@ -141,6 +141,8 @@ int DrawFigures::GetPointX(const int& index, const int& pointNo) const
 
 void DrawFigures::SetPointX(int value, const int& index, const int& pointNo)
 {
+	if (pointNo > GetVertexCount(index) - 1 || pointNo < 0)
+		return;
 	int xIndex = 9;
 	if (m_loadedfigures_data[index][0] == LINE)
 		xIndex -= 3;
@@ -158,6 +160,8 @@ int DrawFigures::GetPointY(const int& index, const int& pointNo) const
 
 void DrawFigures::SetPointY(int value, const int& index, const int& pointNo)
 {
+	if (pointNo > GetVertexCount(index) - 1 || pointNo < 0)
+		return;
 	int yIndex = 10;
 	if (m_loadedfigures_data[index][0] == LINE)
 		yIndex -= 3;

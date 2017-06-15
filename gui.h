@@ -33,6 +33,7 @@ namespace Gui
 		tgui::Theme::Ptr theme = tgui::Theme::create("theme/Black.txt");
 		int m_current_number;
 		int m_current_vertex;
+
 		tgui::EditBox::Ptr changeValues = theme->load("Editbox");
 		tgui::ComboBox::Ptr selectParameterToChange = theme->load("ComboBox");
 		tgui::Label::Ptr figureNumber = theme->load("Label");
@@ -52,6 +53,5 @@ namespace Gui
 		tgui::Button::Ptr downArrowVertex = theme->load("Button");
 		tgui::Button::Ptr saveButton = theme->load("Button");
 	};
-	void onLoadFromFilePressed(tgui::EditBox::Ptr editbox);
 
 }

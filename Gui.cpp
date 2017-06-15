@@ -1,14 +1,5 @@
 #include "Main.h"
 
-void Gui::onLoadFromFilePressed(tgui::EditBox::Ptr editbox)
-{
-	if (editbox->getText() == "File name")
-	{
-		editbox->setText("");
-	}
-}
-
-
 
 Gui::Panel::Panel(tgui::Gui& gui, DrawFigures& loadedData):m_gui(gui),m_loadedData(loadedData){
 }
@@ -18,6 +9,8 @@ void Gui::Panel::preparePanel()
 {
 	m_current_number = 0;
 	m_current_vertex = 0;
+
+
 
 	figureNumber->setSize(140, 30);
 	figureNumber->setPosition(5, 45);
@@ -29,12 +22,14 @@ void Gui::Panel::preparePanel()
 	leftArrow->setText("<");
 	leftArrow->setPosition(65, 70);
 	leftArrow->connect("pressed", &Gui::Panel::leftArrowPressed, this);
+	leftArrow->disable(true);
 	m_gui.add(leftArrow, "leftArrow");
 
 	rightArrow->setSize(20, 20);
 	rightArrow->setText(">");
 	rightArrow->setPosition(115, 70);
 	rightArrow->connect("pressed", &Gui::Panel::rightArrowPressed, this);
+	rightArrow->disable(true);
 	m_gui.add(rightArrow, "rightArrow");
 	
 	currentPosition->setSize(20, 20);
@@ -53,12 +48,14 @@ void Gui::Panel::preparePanel()
 	upArrow->setText("^");
 	upArrow->setPosition(70, 130);
 	upArrow->connect("pressed", &Gui::Panel::upArrowPressed, this);
+	upArrow->disable(true);
 	m_gui.add(upArrow, "upArrow");
 
 	downArrow->setSize(20, 20);
 	downArrow->setText("v");
 	downArrow->setPosition(110, 130);
 	downArrow->connect("pressed", &Gui::Panel::downArrowPressed, this);
+	downArrow->disable(true);
 	m_gui.add(downArrow, "downArrow");
 	
 	selectParameterToChange->setSize(190, 30);
@@ -69,6 +66,7 @@ void Gui::Panel::preparePanel()
 	selectParameterToChange->addItem("Change Border Size");
 	selectParameterToChange->addItem("Opacity");
 	selectParameterToChange->addItem("Vertex Coords");
+	selectParameterToChange->disable(true);
 	m_gui.add(selectParameterToChange, "selectParameterToChange");
 	
 	
@@ -77,6 +75,7 @@ void Gui::Panel::preparePanel()
 	changeValues->setPosition(5, 200);
 	changeValues->setText("");
 	changeValues->setTextSize(14);
+	changeValues->disable(true);
 	m_gui.add(changeValues, "changeValues");
 	
 
@@ -85,6 +84,7 @@ void Gui::Panel::preparePanel()
 	refreshButton->setPosition(45, 240);
 	refreshButton->setTextSize(14);
 	refreshButton->connect("pressed", &Gui::Panel::refreshButtonPressed, this);
+	refreshButton->disable(true);
 	m_gui.add(refreshButton, "refreshButton");
 
 	lineColorParameter->setSize(140, 60);
@@ -121,26 +121,70 @@ void Gui::Panel::preparePanel()
 	upArrowVertex->setText("^");
 	upArrowVertex->setPosition(160, 500);
 	upArrowVertex->connect("pressed", &Gui::Panel::upArrowVertexPressed, this);
+	upArrowVertex->disable(true);
 	m_gui.add(upArrowVertex, "upArrowVertex");
 
 	downArrowVertex->setSize(20, 20);
 	downArrowVertex->setText("v");
 	downArrowVertex->setPosition(160, 520);
 	downArrowVertex->connect("pressed", &Gui::Panel::downArrowVertexPressed, this);
+	downArrowVertex->disable(true);
 	m_gui.add(downArrowVertex, "downArrowVertex");
 
 	saveButton->setSize(110, 30);
 	saveButton->setText("Save");
 	saveButton->setPosition(45, 560);
 	saveButton->setTextSize(14);
+	saveButton->disable(true);
 	m_gui.add(saveButton, "saveButton");
 }
 
 void Gui::Panel::updatePanel() {
 	
 	if (m_loadedData.GetCountOfElements()==0) {
+		if (changeValues->isEnabled())
+			changeValues->disable();
+		if (selectParameterToChange->isEnabled())
+			selectParameterToChange->disable();
+		if (leftArrow->isEnabled())
+			leftArrow->disable();
+		if (rightArrow->isEnabled())
+			rightArrow->disable();
+		if (downArrow->isEnabled())
+			downArrow->disable();
+		if (upArrow->isEnabled())
+			upArrow->disable();
+		if (refreshButton->isEnabled())
+			refreshButton->disable();
+		if (saveButton->isEnabled())
+			saveButton->disable();
+		if (upArrowVertex->isEnabled())
+			upArrowVertex->disable();
+		if (downArrowVertex->isEnabled())
+			downArrowVertex->disable();
 		return ;
 	}
+
+	if (!changeValues->isEnabled())
+		changeValues->enable();
+	if (!selectParameterToChange->isEnabled())
+		selectParameterToChange->enable();
+	if (!leftArrow->isEnabled())
+		leftArrow->enable();
+	if (!rightArrow->isEnabled())
+		rightArrow->enable();
+	if (!downArrow->isEnabled())
+		downArrow->enable();
+	if (!upArrow->isEnabled())
+		upArrow->enable();
+	if (!refreshButton->isEnabled())
+		refreshButton->enable();
+	if (!saveButton->isEnabled())
+		saveButton->enable();
+	if (!upArrowVertex->isEnabled())
+		upArrowVertex->enable();
+	if (!downArrowVertex->isEnabled())
+		downArrowVertex->enable();
 
 	if (m_loadedData.GetFigureType(m_current_number) == 1) {
 		updateLineColorInfo();
@@ -182,6 +226,7 @@ void Gui::Panel::leftArrowPressed() {
 	if (m_current_number != 0) {
 
 		m_current_number--;
+		m_current_vertex = 0;
 
 		std::ostringstream ss;
 		ss << m_current_number;
@@ -194,6 +239,7 @@ void Gui::Panel::rightArrowPressed() {
 	if (m_current_number != m_loadedData.GetCountOfElements()-1) {
 
 		m_current_number++;
+		m_current_vertex = 0;
 
 		std::ostringstream ss;
 		ss << m_current_number;
@@ -212,101 +258,11 @@ void Gui::Panel::upArrowPressed() {
 		std::string tekst = ss.str();
 		currentPosition->setText(tekst);
 	}
-		/*
-		int outR = m_loadedData.GetOutlineR(m_current_number);
-		int outG = m_loadedData.GetOutlineG(m_current_number);
-		int outB = m_loadedData.GetOutlineB(m_current_number);
-		int inR = m_loadedData.GetInR(m_current_number);
-		int inG = m_loadedData.GetInG(m_current_number);
-		int inB = m_loadedData.GetInB(m_current_number);
-		int bSize = m_loadedData.GetBorderSize(m_current_number);
-		int opacity = m_loadedData.GetOpacity(m_current_number);
-		m_loadedData.SetOutlineR(m_loadedData.GetOutlineR(m_current_number + 1), m_current_number);
-		m_loadedData.SetOutlineR(outR, m_current_number + 1);
-		m_loadedData.SetOutlineG(m_loadedData.GetOutlineG(m_current_number + 1), m_current_number);
-		m_loadedData.SetOutlineG(outG, m_current_number + 1);
-		m_loadedData.SetOutlineB(m_loadedData.GetOutlineB(m_current_number + 1), m_current_number);
-		m_loadedData.SetOutlineB(outB, m_current_number + 1);
-
-		m_loadedData.SetInR(m_loadedData.GetInR(m_current_number + 1), m_current_number);
-		m_loadedData.SetInR(inR, m_current_number + 1);
-		m_loadedData.SetInG(m_loadedData.GetInG(m_current_number + 1), m_current_number);
-		m_loadedData.SetInG(inG, m_current_number + 1);
-		m_loadedData.SetInB(m_loadedData.GetInB(m_current_number + 1), m_current_number);
-		m_loadedData.SetInB(inB, m_current_number + 1);
-
-		m_loadedData.SetBorderSize(m_loadedData.GetBorderSize(m_current_number + 1), m_current_number);
-		m_loadedData.SetBorderSize(bSize, m_current_number + 1);
-
-		m_loadedData.SetOpacity(m_loadedData.GetOpacity(m_current_number + 1), m_current_number);
-		m_loadedData.SetOpacity(opacity, m_current_number + 1);
-
-		for (int i = 0; i <= m_loadedData.GetVertexCount(m_current_number); i++) {
-			int corX = m_loadedData.GetPointX(m_current_number, i);
-			int corY = m_loadedData.GetPointY(m_current_number, i);
-			m_loadedData.SetPointX(m_loadedData.GetPointX(m_current_number + 1, i), m_current_number, i);
-			m_loadedData.SetPointY(m_loadedData.GetPointY(m_current_number + 1, i), m_current_number, i);
-			m_loadedData.SetPointX(corX, m_current_number + 1, i);
-			m_loadedData.SetPointY(corY, m_current_number + 1, i);
-		}
-
-		m_current_number++;
-
-		std::ostringstream ss;
-		ss << m_current_number;
-		std::string tekst = ss.str();
-		currentPosition->setText(tekst);
-	}
-	*/
+		
 }
 
 void Gui::Panel::downArrowPressed() {
-	if (m_current_number >=1) {/*
-		m_current_number--;
-
-		std::ostringstream ss;
-		ss << m_current_number;
-		std::string tekst = ss.str();
-		currentPosition->setText(tekst);
-
-		int outR = m_loadedData.GetOutlineR(m_current_number);
-		int outG = m_loadedData.GetOutlineG(m_current_number);
-		int outB = m_loadedData.GetOutlineB(m_current_number);
-		int inR = m_loadedData.GetInR(m_current_number);
-		int inG = m_loadedData.GetInG(m_current_number);
-		int inB = m_loadedData.GetInB(m_current_number);
-		int bSize = m_loadedData.GetBorderSize(m_current_number);
-		int opacity = m_loadedData.GetOpacity(m_current_number);
-		m_loadedData.SetOutlineR(m_loadedData.GetOutlineR(m_current_number + 1), m_current_number);
-		m_loadedData.SetOutlineR(outR, m_current_number + 1);
-		m_loadedData.SetOutlineG(m_loadedData.GetOutlineG(m_current_number + 1), m_current_number);
-		m_loadedData.SetOutlineG(outG, m_current_number + 1);
-		m_loadedData.SetOutlineB(m_loadedData.GetOutlineB(m_current_number + 1), m_current_number);
-		m_loadedData.SetOutlineB(outB, m_current_number + 1);
-
-		m_loadedData.SetInR(m_loadedData.GetInR(m_current_number + 1), m_current_number);
-		m_loadedData.SetInR(inR, m_current_number + 1);
-		m_loadedData.SetInG(m_loadedData.GetInG(m_current_number + 1), m_current_number);
-		m_loadedData.SetInG(inG, m_current_number + 1);
-		m_loadedData.SetInB(m_loadedData.GetInB(m_current_number + 1), m_current_number);
-		m_loadedData.SetInB(inB, m_current_number + 1);
-
-		m_loadedData.SetBorderSize(m_loadedData.GetBorderSize(m_current_number + 1), m_current_number);
-		m_loadedData.SetBorderSize(bSize, m_current_number + 1);
-
-		m_loadedData.SetOpacity(m_loadedData.GetOpacity(m_current_number + 1), m_current_number);
-		m_loadedData.SetOpacity(opacity, m_current_number + 1);
-
-		for (int i = 0; i <= m_loadedData.GetVertexCount(m_current_number); i++) {
-			int corX = m_loadedData.GetPointX(m_current_number, i);
-			int corY = m_loadedData.GetPointY(m_current_number, i);
-			m_loadedData.SetPointX(m_loadedData.GetPointX(m_current_number + 1, i), m_current_number, i);
-			m_loadedData.SetPointY(m_loadedData.GetPointY(m_current_number + 1, i), m_current_number, i);
-			m_loadedData.SetPointX(corX, m_current_number + 1, i);
-			m_loadedData.SetPointY(corY, m_current_number + 1, i);
-		}
-
-		*/
+	if (m_current_number >=1) {
 		m_loadedData.ChangeLayers(m_current_number, false);
 		m_current_number--;
 
@@ -403,6 +359,8 @@ void Gui::Panel::checkParameterToChange() {
 		changeValues->setDefaultText("R G B");
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 1) {
+		if (m_loadedData.GetFigureType(m_current_number) == DrawFigures::LINE)
+			selectParameterToChange->setSelectedItemByIndex(0);
 		changeValues->setDefaultText("R G B");
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 2) {
@@ -419,26 +377,28 @@ void Gui::Panel::checkParameterToChange() {
 void Gui::Panel::refreshButtonPressed() {
 	if (selectParameterToChange->getSelectedItemIndex() == 0) {
 		if (changeValues->getText() != "") {
-			int value;
+			int valueR, valueG, valueB;
 			std::istringstream iss(changeValues->getText());
-			iss >> value;
-			m_loadedData.SetOutlineR(value, m_current_number);
-			iss >> value;
-			m_loadedData.SetOutlineG(value, m_current_number);
-			iss >> value;
-			m_loadedData.SetOutlineB(value, m_current_number);
+			iss >> valueR >> valueG >> valueB;
+			if (!iss)
+				return;
+			m_loadedData.SetOutlineR(valueR, m_current_number);
+			m_loadedData.SetOutlineG(valueG, m_current_number);
+			m_loadedData.SetOutlineB(valueB, m_current_number);
+			changeValues->setText("");
 		}
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 1) {
 		if (changeValues->getText() != "") {
-			int value;
+			int valueR, valueG, valueB;
 			std::istringstream iss(changeValues->getText());
-			iss >> value;
-			m_loadedData.SetInR(value, m_current_number);
-			iss >> value;
-			m_loadedData.SetInG(value, m_current_number);
-			iss >> value;
-			m_loadedData.SetInB(value, m_current_number);
+			iss >> valueR >> valueG >> valueB;
+			if (!iss)
+				return;
+			m_loadedData.SetInR(valueR, m_current_number);
+			m_loadedData.SetInG(valueG, m_current_number);
+			m_loadedData.SetInB(valueB, m_current_number);
+			changeValues->setText("");
 		}
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 2) {
@@ -446,7 +406,10 @@ void Gui::Panel::refreshButtonPressed() {
 			int value;
 			std::istringstream iss(changeValues->getText());
 			iss >> value;
+			if (!iss)
+				return;
 			m_loadedData.SetBorderSize(value, m_current_number);
+			changeValues->setText("");
 		}
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 3) {
@@ -454,19 +417,21 @@ void Gui::Panel::refreshButtonPressed() {
 			int value;
 			std::istringstream iss(changeValues->getText());
 			iss >> value;
+			if (!iss)
+				return;
 			m_loadedData.SetOpacity(value, m_current_number);
+			changeValues->setText("");
 		}
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 4) {
 		if (changeValues->getText() != "") {
-			int value;
+			int pointID, newX, newY;
 			std::istringstream iss(changeValues->getText());
-			iss >> value;
-			int index = value;
-			iss >> value;
-			m_loadedData.SetPointX(value, m_current_number,index-1);
-			iss >> value;
-			m_loadedData.SetPointY(value, m_current_number,index-1);
+			iss >> pointID >> newX >> newY;
+			if (!iss)
+				return;
+			m_loadedData.SetPointX(newX, m_current_number,pointID-1);
+			m_loadedData.SetPointY(newY, m_current_number,pointID-1);
 		}
 	}
 }
