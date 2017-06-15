@@ -203,7 +203,16 @@ void Gui::Panel::rightArrowPressed() {
 }
 
 void Gui::Panel::upArrowPressed() {
-	if (m_current_number < m_loadedData.GetCountOfElements()-1) {
+	if (m_current_number < m_loadedData.GetCountOfElements() - 1) {
+		m_loadedData.ChangeLayers(m_current_number, true);
+		m_current_number++;
+
+		std::ostringstream ss;
+		ss << m_current_number;
+		std::string tekst = ss.str();
+		currentPosition->setText(tekst);
+	}
+		/*
 		int outR = m_loadedData.GetOutlineR(m_current_number);
 		int outG = m_loadedData.GetOutlineG(m_current_number);
 		int outB = m_loadedData.GetOutlineB(m_current_number);
@@ -248,11 +257,11 @@ void Gui::Panel::upArrowPressed() {
 		std::string tekst = ss.str();
 		currentPosition->setText(tekst);
 	}
-
+	*/
 }
 
 void Gui::Panel::downArrowPressed() {
-	if (m_current_number >1) {
+	if (m_current_number >=1) {/*
 		m_current_number--;
 
 		std::ostringstream ss;
@@ -297,7 +306,14 @@ void Gui::Panel::downArrowPressed() {
 			m_loadedData.SetPointY(corY, m_current_number + 1, i);
 		}
 
-		
+		*/
+		m_loadedData.ChangeLayers(m_current_number, false);
+		m_current_number--;
+
+		std::ostringstream ss;
+		ss << m_current_number;
+		std::string tekst = ss.str();
+		currentPosition->setText(tekst);
 	}
 }
 
