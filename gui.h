@@ -15,19 +15,25 @@ namespace Gui
 		void updatePanel();
 		void leftArrowPressed();
 		void rightArrowPressed();
+		void upArrowVertexPressed();
+		void downArrowVertexPressed();
 		void updateLineColorInfo();
 		void updateFulfilColorInfo();
 		void updateBorderSize();
 		void updateOpacity();
 		void updateVertexes();
+		void checkParameterToChange();
+		void refreshButtonPressed();
+		void upArrowPressed();
+		void downArrowPressed();
 
 	private:
 		tgui::Gui& m_gui;
 		DrawFigures& m_loadedData;
 		tgui::Theme::Ptr theme = tgui::Theme::create("theme/Black.txt");
 		int m_current_number;
-
-
+		int m_current_vertex;
+		tgui::EditBox::Ptr changeValues = theme->load("Editbox");
 		tgui::ComboBox::Ptr selectParameterToChange = theme->load("ComboBox");
 		tgui::Label::Ptr figureNumber = theme->load("Label");
 		tgui::Button::Ptr leftArrow = theme->load("Button");
@@ -36,15 +42,14 @@ namespace Gui
 		tgui::Label::Ptr changeOrder = theme->load("Label");
 		tgui::Button::Ptr downArrow = theme->load("Button");
 		tgui::Button::Ptr upArrow = theme->load("Button");
-		//tgui::Label::Ptr figureParameters = theme->load("Label");
 		tgui::Label::Ptr lineColorParameter = theme->load("Label");
 		tgui::Label::Ptr fulfilColorParameter = theme->load("Label");
 		tgui::Label::Ptr borderSizeParameter = theme->load("Label");
 		tgui::Label::Ptr opacityParameter = theme->load("Label");
-		tgui::Label::Ptr vertexesParameter = theme->load("label");
-		tgui::EditBox::Ptr changeValues = theme->load("Editbox");
-
-
+		tgui::Label::Ptr vertexesParameter = theme->load("Label");
+		tgui::Button::Ptr refreshButton = theme->load("Button");
+		tgui::Button::Ptr upArrowVertex = theme->load("Button");
+		tgui::Button::Ptr downArrowVertex = theme->load("Button");
 		tgui::Button::Ptr saveButton = theme->load("Button");
 	};
 	void onLoadFromFilePressed(tgui::EditBox::Ptr editbox);

@@ -20,7 +20,7 @@ void loadGui(tgui::Gui& gui, DrawFigures& loadedData)
 
 	loadFromSubmit->connect("pressed", &DrawFigures::LoadFromFile, &loadedData, loadFromFilename);
 	loadFromFilename->connect("clicked", Gui::onLoadFromFilePressed, loadFromFilename);
-
+	
 }
 
 
