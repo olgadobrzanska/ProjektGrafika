@@ -172,6 +172,20 @@ int DrawFigures::GetVertexCount(const int& index) const
 	return (m_loadedfigures_data[index].size() - 9) / 2;
 }
 
+bool DrawFigures::ChangeLayers(const int& layerID, bool goRight)
+{
+	if (layerID < 0 || layerID > GetCountOfElements() - 1)
+		return false;
+	if (layerID == 0 && !goRight)
+		return false;
+	if (layerID == GetCountOfElements() - 1 && goRight)
+		return false;
+	int secondIndex = (goRight) ? layerID + 1 : layerID - 1;
+	std::swap(m_loadedfigures_data[layerID], m_loadedfigures_data[secondIndex]);
+	std::swap(m_loadedFigures[layerID], m_loadedFigures[secondIndex]);
+	return true;
+}
+
 
 bool DrawFigures::LoadFromFile(tgui::EditBox::Ptr file)
 {

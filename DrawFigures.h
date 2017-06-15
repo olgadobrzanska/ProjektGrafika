@@ -193,6 +193,15 @@ public:
 	 * \return Ilosc punktow
 	 */
 	static int GetVertexCount(const std::vector<int>& data) { return data[0] == LINE ? 2 : (data.size() - 9) / 2; }
+
+	/**
+	 * Funkcja zamieniajaca dwie sasiednie warstwy kolejnoscia
+	 * \param[in] layerID ID przenoszonej warstwy
+	 * \param[in] goRight Jesli prawda, zamieniamy z warstwa o ID wiekszym
+	 * Jesli falsz, zamieniamy z wartswa o ID mniejszym
+	 * \return Prawda, jesli zamiana poprawna
+	 */
+	bool ChangeLayers(const int& layerID, bool goRight);
 private:
 	std::vector<sf::Drawable*> m_loadedFigures; //!< Figury gotowe do wyrysowania
 	std::vector<std::vector<int> > m_loadedfigures_data; //!< Dane wyrysowywanych figur
