@@ -1,7 +1,7 @@
 #include "Main.h"
 
 
-Gui::Panel::Panel(tgui::Gui& gui, DrawFigures& loadedData):m_gui(gui),m_loadedData(loadedData){
+Gui::Panel::Panel(sf::RenderWindow& window, tgui::Gui& gui, DrawFigures& loadedData):m_window(window),m_gui(gui),m_loadedData(loadedData){
 }
 
 
@@ -135,6 +135,7 @@ void Gui::Panel::preparePanel()
 	saveButton->setText("Save");
 	saveButton->setPosition(45, 560);
 	saveButton->setTextSize(14);
+	saveButton->connect("pressed", &Gui::Panel::saveButtonPressed, this);
 	saveButton->disable(true);
 	m_gui.add(saveButton, "saveButton");
 }
@@ -434,4 +435,18 @@ void Gui::Panel::refreshButtonPressed() {
 			m_loadedData.SetPointY(newY, m_current_number,pointID-1);
 		}
 	}
+}
+
+void Gui::Panel::saveButtonPressed() const
+{
+	sf::Texture texture;
+	sf::Vector2u getWindowSize = m_window.getSize();
+	texture.create(getWindowSize.x, getWindowSize.y);
+	texture.update(m_window);
+	sf::Image screenshot = texture.copyToImage();
+	screenshot.saveToFile("myresult.png");
+	texture.loadFromFile("myresult.png", sf::IntRect(200, 0, 999, 599));
+	screenshot = texture.copyToImage();
+	std::remove("myresult.png");
+	screenshot.saveToFile("myresult.bmp");
 }

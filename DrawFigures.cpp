@@ -2,7 +2,7 @@
 #include "Main.h"
 #include <fstream>
 
-int DrawFigures::m_xOffset = 200;
+int DrawFigures::m_xOffset = 202;
 int DrawFigures::m_yOffset = 5;
 
 DrawFigures::DrawFigures()
@@ -251,6 +251,8 @@ bool DrawFigures::m_isCorrectSizeOfVector(const std::vector<int>& data)
 		break;
 	case POLYGON:
 		return data.size()-13 >= 0 && (data.size() - 13) % 2 == 0;
+	case POLYGONCIRCLE:
+		expectedSize = 13;
 	}
 	return expectedSize == data.size();
 }
@@ -273,7 +275,7 @@ sf::Drawable* DrawFigures::m_addLine(std::vector<int>& data)
 	if (endX - startX == 0)
 		line->setRotation(90);
 	else
-		line->setRotation(atan(1.*(endY - startY) / (endX - startX)) * 180. / M_PI);
+		line->setRotation((float)(atan(1.*(endY - startY) / (endX - startX)) * 180. / M_PI));
 
 
 
@@ -339,6 +341,23 @@ sf::Drawable* DrawFigures::m_addPolygon(std::vector<int>& data)
 	return addedPolygon;
 }
 
+sf::Drawable* DrawFigures::m_addPolygonCircle(std::vector<int>& data)
+{
+	int pointCount = data[12];
+	int colorR = m_proper_value_0_255(data[1]), colorG = m_proper_value_0_255(data[2]), colorB = m_proper_value_0_255(data[3]);
+	int insideR = m_proper_value_0_255(data[4]), insideG = m_proper_value_0_255(data[5]), insideB = m_proper_value_0_255(data[6]);
+	int borderSize = data[7], opacity = m_proper_value_0_255(data[8]);
+	sf::CircleShape *shape = new sf::CircleShape((float)data[11], pointCount);
+	shape->setOutlineColor(sf::Color(colorR, colorG, colorB, opacity));
+	shape->setFillColor(sf::Color(insideR, insideG, insideB, opacity));
+	shape->setOutlineThickness(float(borderSize));
+	shape->setPosition((float)(m_xOffset + data[9]), (float)(m_yOffset + data[10]));
+
+	sf::Drawable* addedPolygon = shape;
+	return addedPolygon;
+}
+
+
 DrawFigures::drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figureType)
 {
 	drawingFunctionPointer fp;
@@ -355,6 +374,9 @@ DrawFigures::drawingFunctionPointer DrawFigures::m_getDrawingFunction(int figure
 		break;
 	case POLYGON:
 		fp = m_addPolygon;
+		break;
+	case POLYGONCIRCLE:
+		fp = m_addPolygonCircle;
 		break;
 	default:
 		fp = m_addCircle;

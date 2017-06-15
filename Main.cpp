@@ -25,16 +25,15 @@ void loadGui(tgui::Gui& gui, DrawFigures& loadedData)
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1000, 600), "SFML works!", sf::Style::Titlebar | sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode(1000, 600), "Projekt - Dobrzanska, Kusarek, Augustyn", sf::Style::Titlebar | sf::Style::Close);
 	tgui::Gui gui(window);
 	DrawFigures loadedData;
 	sf::RectangleShape borderBox(sf::Vector2f(200., 0.));
 	borderBox.setOutlineColor(sf::Color::Black);
-	borderBox.setOutlineThickness(0.);
 	borderBox.setFillColor(sf::Color::White);
-	borderBox.setPosition(198., 0.);
-	borderBox.setSize(sf::Vector2f(802., 600.));
-	Gui::Panel newPanel(gui, loadedData);
+	borderBox.setPosition(200., 0.);
+	borderBox.setSize(sf::Vector2f(800., 600.));
+	Gui::Panel newPanel(window, gui, loadedData);
 	newPanel.preparePanel();
 	try
 	{

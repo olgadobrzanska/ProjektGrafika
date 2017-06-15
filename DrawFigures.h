@@ -21,7 +21,8 @@ public:
 		CIRCLE = 1, //!< Kolo
 		RECTANGLE = 2, //!< Prostokat
 		LINE = 3, //!< Linia
-		POLYGON = 4 //!< Wielokat
+		POLYGON = 4, //!< Wielokat
+		POLYGONCIRCLE = 5 //!< Wielokat foremny
 	};
 
 	/**
@@ -226,30 +227,38 @@ private:
 	/**
 	 * Utworzenie gotowej do rysowania linii
 	 * \param data Dane do utworzenia linii
-	 * \return Gotowa do wyrysowania linia
+	 * \return Wskaznik do gotowej do wyrysowania linii
 	 */
 	static sf::Drawable* m_addLine(std::vector<int>& data);
 
 	/**
 	* Utworzenie gotowego do rysowania kola
 	* \param data Dane do utworzenia kola
-	* \return Gotowe do wyrysowania kolo
+	* \return Wskaznik do gotowego do wyrysowania kola
 	*/
 	static sf::Drawable* m_addCircle(std::vector<int>& data);
 
 	/**
 	* Utworzenie gotowego do rysowania prostokata
 	* \param data Dane do utworzenia prostokata
-	* \return Gotowe do wyrysowania prostokata
+	* \return Wskaznik do gotowego do wyrysowania prostokata
 	*/
 	static sf::Drawable* m_addRectangle(std::vector<int>& data);
 
 	/**
 	* Utworzenie gotowego do rysowania wielokata
 	* \param data Dane do utworzenia wielokata
-	* \return Gotowe do wyrysowania wielokata
+	* \return Wskaznik do gotowego do wyrysowania wielokata
 	*/
 	static sf::Drawable* m_addPolygon(std::vector<int>& data);
+
+	/**
+	 * Utworzenie gotowego do rysowania wielokata foremnego
+	 * rysowanie odbywa sie poprzez wpisanie w okrag
+	 * \param data Dane do utworzenia wielokata foremnego
+	 * \return Wskaznik do gotowego do rysowania wielokata foremnego
+	 */
+	static sf::Drawable* m_addPolygonCircle(std::vector<int>& data);
 
 	//! Wskaznik na funkcje do rysowania
 	typedef sf::Drawable* (*drawingFunctionPointer)(std::vector<int>&);

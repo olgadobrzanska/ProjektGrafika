@@ -9,7 +9,7 @@ namespace Gui
 {
 	class Panel {
 	public:
-		Panel(tgui::Gui& gui, DrawFigures& loadedData);
+		Panel(sf::RenderWindow& window, tgui::Gui& gui, DrawFigures& loadedData);
 
 		void preparePanel();
 		void updatePanel();
@@ -26,8 +26,10 @@ namespace Gui
 		void refreshButtonPressed();
 		void upArrowPressed();
 		void downArrowPressed();
+		void saveButtonPressed() const;
 
 	private:
+		sf::RenderWindow& m_window;
 		tgui::Gui& m_gui;
 		DrawFigures& m_loadedData;
 		tgui::Theme::Ptr theme = tgui::Theme::create("theme/Black.txt");
