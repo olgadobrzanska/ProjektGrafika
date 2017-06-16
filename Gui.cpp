@@ -318,6 +318,7 @@ void Gui::Panel::updateFigureName()
 		}
 	else
 		figurename = "";
+	figureName->setTextStyle(sf::Text::Bold);
 	figureName->setText(figurename);
 }
 
