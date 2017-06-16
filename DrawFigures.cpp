@@ -1,4 +1,3 @@
-#define _USE_MATH_DEFINES
 #include "Main.h"
 #include <fstream>
 

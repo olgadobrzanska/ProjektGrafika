@@ -2,6 +2,7 @@
 
 
 Gui::Panel::Panel(sf::RenderWindow& window, tgui::Gui& gui, DrawFigures& loadedData):m_window(window),m_gui(gui),m_loadedData(loadedData){
+	preparePanel();
 }
 
 
@@ -10,6 +11,20 @@ void Gui::Panel::preparePanel()
 	m_current_number = 0;
 	m_current_vertex = 0;
 
+	tgui::EditBox::Ptr loadFromFilename = theme->load("Editbox");
+	loadFromFilename->setSize(140, 30);
+	loadFromFilename->setPosition(5, 5);
+	loadFromFilename->setDefaultText("File name");
+	loadFromFilename->setTextSize(14);
+	m_gui.add(loadFromFilename, "loadFromFilename");
+
+	tgui::Button::Ptr loadFromSubmit = theme->load("Button");
+	loadFromSubmit->setSize(40, 30);
+	loadFromSubmit->setText("Load");
+	loadFromSubmit->setPosition(155, 5);
+	m_gui.add(loadFromSubmit, "loadFromSubmit");
+
+	loadFromSubmit->connect("pressed", &DrawFigures::LoadFromFile, &m_loadedData, loadFromFilename);
 
 
 	figureNumber->setSize(140, 30);
@@ -147,7 +162,7 @@ void Gui::Panel::preparePanel()
 	m_gui.add(saveButton, "saveButton");
 }
 
-void Gui::Panel::updatePanel() {
+void Gui::Panel::updatePanel() const {
 	
 	if (m_loadedData.GetCountOfElements()==0) {
 		if (changeValues->isEnabled())
@@ -197,8 +212,8 @@ void Gui::Panel::updatePanel() {
 	if (m_loadedData.GetFigureType(m_current_number) == 3)
 		fulfilColorParameter->setText("");
 	else
-		updateFulfilColorInfo();
-	updateLineColorInfo();
+		updateFillColorInfo();
+	updateOutlineColorInfo();
 	updateBorderSize();
 	updateOpacity();
 	updateVertexes();
@@ -287,12 +302,13 @@ void Gui::Panel::downArrowVertexPressed() {
 		ss << ": ";
 		ss << m_loadedData.GetPointX(m_current_number, m_current_vertex);
 		ss << " ";
-		ss << m_loadedData.GetPointY(m_current_number, m_current_vertex);		std::string tekst = ss.str();
+		ss << m_loadedData.GetPointY(m_current_number, m_current_vertex);
+		std::string tekst = ss.str();
 		vertexesParameter->setText(tekst);
 	}
 }
 
-void Gui::Panel::updateFigureName()
+void Gui::Panel::updateFigureName() const
 {
 	std::string figurename;
 	if (m_loadedData.GetCountOfElements() != 0)
@@ -322,7 +338,7 @@ void Gui::Panel::updateFigureName()
 	figureName->setText(figurename);
 }
 
-void Gui::Panel::updateLineColorInfo() {
+void Gui::Panel::updateOutlineColorInfo() const {
 	std::ostringstream ss;
 	ss << "Outline Color: \nR:";
 	ss << m_loadedData.GetOutlineR(m_current_number);
@@ -334,7 +350,7 @@ void Gui::Panel::updateLineColorInfo() {
 	lineColorParameter->setText(tekst);
 }
 
-void Gui::Panel::updateFulfilColorInfo() {
+void Gui::Panel::updateFillColorInfo() const {
 	std::ostringstream ss;
 	ss << "Fill Color: \nR:";
 	ss << m_loadedData.GetInR(m_current_number);
@@ -346,7 +362,7 @@ void Gui::Panel::updateFulfilColorInfo() {
 	fulfilColorParameter->setText(tekst);
 }
 
-void Gui::Panel::updateBorderSize() {
+void Gui::Panel::updateBorderSize() const {
 	std::ostringstream ss;
 	ss << "Border Size: \n";
 	ss << m_loadedData.GetBorderSize(m_current_number);
@@ -354,7 +370,7 @@ void Gui::Panel::updateBorderSize() {
 	borderSizeParameter->setText(tekst);
 }
 
-void Gui::Panel::updateOpacity() {
+void Gui::Panel::updateOpacity() const {
 	std::ostringstream ss;
 	ss << "Opacity: \n";
 	ss << m_loadedData.GetOpacity(m_current_number);
@@ -362,7 +378,7 @@ void Gui::Panel::updateOpacity() {
 	opacityParameter->setText(tekst);
 }
 
-void Gui::Panel::updateVertexes() {
+void Gui::Panel::updateVertexes() const {
 	
 	std::ostringstream ss;
 	if (m_loadedData.GetFigureType(m_current_number) == DrawFigures::POLYGONCIRCLE && m_current_vertex == 1)
@@ -378,7 +394,7 @@ void Gui::Panel::updateVertexes() {
 	vertexesParameter->setText(tekst);
 }
 
-void Gui::Panel::checkParameterToChange() {
+void Gui::Panel::checkParameterToChange() const {
 	
 	if (selectParameterToChange->getSelectedItemIndex() == 0) {
 		changeValues->setDefaultText("R G B");
@@ -405,7 +421,7 @@ void Gui::Panel::checkParameterToChange() {
 	}
 }
 
-void Gui::Panel::refreshButtonPressed() {
+void Gui::Panel::refreshButtonPressed() const {
 	if (selectParameterToChange->getSelectedItemIndex() == 0) {
 		if (changeValues->getText() != "") {
 			int valueR, valueG, valueB;

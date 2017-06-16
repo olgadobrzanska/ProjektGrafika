@@ -11,104 +11,117 @@ namespace Gui
 	public:
 
 		/**
-		* Konstruktor klasy Panel
-		* \param[in] zmienna przechowywujaca /... uzupelnic/
-		* \param[in] zmienna przechowywujaca parametry wszystkich figur
+		* \brief Konstruktor interfejsu uzytkownika
+		* \param[in] window Okno w ktorym generowane jest GUI\n Potrzebne do robienia zrzutu ekranu
+		* \param[in] gui Interfejs obslugujacy komunikacje z uzytkownikiem
+		* \param[in] loadedData Zmienna przechowywujaca parametry wszystkich figur
 		*/
 		Panel(sf::RenderWindow& window, tgui::Gui& gui, DrawFigures& loadedData);
-		
-		/**
-		* Metoda przygotywujaca interfejs uzytkownika 
-		*/
-		void preparePanel();
 
 		/**
-		* Metoda dostosowuje interfejs po wczytaniu pliku
+		* \brief Uaktualnianie interfejsu po kazdej zmianie wartosci
 		*/
-		void updatePanel();
+		void updatePanel() const;
 
 		/**
-		* Metoda obslugujaca przycisk "lewej strzalki" - zmienia na kolejna figure do modyfikacji
+		* \brief Zmiana aktualnie obslugiwanej figury na poprzednia
 		*/
 		void leftArrowPressed();
 
 		/**
-		* Metoda obslugujaca przycisk "prawej strzalki" - zmienia na poprzednia figure do modyfikacji
+		* \brief Zmiana aktualnie obslugiwanej figury na nastepna
 		*/
 		void rightArrowPressed();
 		
 		/**
-		* Metoda obslugujaca przycisk "gornej strzalki" - przesuwa aktualn¹ warstwe o jeden poziom wyzej
+		* \brief Przesuniecie aktualnie obslugiwanej figury jedna warstwe wyzej
 		*/
 		void upArrowVertexPressed();
 
 		/**
-		* Metoda obslugujaca przycisk "dolnej strzalki" - przesuwa aktualn¹ warstwe o jeden poziom nizej
+		* \brief Przesuniecie aktualnie obslugiwanej figury jedna warstwe nizej
 		*/
 		void downArrowVertexPressed();
 
 		/**
-		* Metoda wypisuje na ekran rodzaj aktualnej figury
+		* \brief Uaktualnienie wypisywanej nazwy aktualnie obslugiwanej figury
 		*/
-		void updateFigureName();
+		void updateFigureName() const;
 
 		/**
-		* Metoda wypisuje na ekran aktualny kolor linii zewnetrznej figury
+		* \brief Wypisanie koloru obramowania wybranej figury
 		*/
-		void updateLineColorInfo();
+		void updateOutlineColorInfo() const;
 
 		/**
-		* Metoda wypisuje na ekran aktualny kolor wypelnienia figury
+		* \brief Wypisanie koloru wypelnienia wybranej figury
 		*/
-		void updateFulfilColorInfo();
+		void updateFillColorInfo() const;
 
 		/**
-		* Metoda wypisuje na ekran aktualna grubosc linii figury
+		* \brief Wypisanie grubosci obramowania wybranej figury
+		* 
+		* W przypadku linii (#DrawFigures.FigType LINE) wypisywana jest grubosc linii
 		*/
-		void updateBorderSize();
+		void updateBorderSize() const;
 
 		/**
-		* Metoda wypisuje na ekran aktualna przezrocystosc figury
+		* \brief Wypisanie przezroczystoci wybranej figury
 		*/
-		void updateOpacity();
+		void updateOpacity() const;
 
 		/**
-		* Metoda wypisuje na ekran wspolrzedne aktualnej figury
+		* \brief Wypisanie informacji o wierzcholkach figury
+		* \sa DrawFigures.m_loadedfigures_data
 		*/
-		void updateVertexes();
+		void updateVertexes() const;
 
 		/**
-		* Metoda sprawdza jaki jest wybor uzytkownika z comboboxu i wypisuje ponizej (w tekst box) sposob podania nowych danych
+		* \brief Obsluga wyboru zmienianego parametru figury
+		* 
+		* Na podstawie wyboru w comboboxie generowana jest podpowiedz, w jaki sposob nalezy uzupelnic 
+		* textbox znajdujacy sie ponizej oraz w odpowiedni sposob obslugiwane jest zapisanie ustawien.
 		*/
-		void checkParameterToChange();
+		void checkParameterToChange() const;
 
 		/**
-		* Metoda pobiera z tekstboxu nowe parametry, podane przez uzytkowika i uaktualnia je na rysunku
+		* \brief Zapisanie wprowadzonych do textboxa danych
+		* 
+		* Tresc TextBoxa jest kasowana, jesli zapis odbyl sie poprawnie\n
+		* W przeciwnym razie zawartosc textboxa nie jest kasowana.
 		*/
-		void refreshButtonPressed();
+		void refreshButtonPressed() const;
 
 		/**
-		* Metoda obslugujaca przycisk "gornej strzalki" - umozliwia odczyt polozenia wszystkich wierzcholkow figury
+		* \brief Poruszanie sie po liscie wierzcholkow w gore
 		*/
 		void upArrowPressed();
 
 		/**
-		* Metoda obslugujaca przycisk "dolnej strzalki" - umozliwia odczyt polozenia wszystkich wierzcholkow figury
+		* \brief Poruszanie sie po liscie wierzcholkow w dol
 		*/
 		void downArrowPressed();
 
 		/**
-		* Metoda zapisuje aktualny stan obrazka do pliku myresult.png w katalogu biezacym
+		* \brief Wykonanie zrzutu ekranu wyrysowanych figur
+		* 
+		* Zrzut ekranu jest zapisywany do pliku myresult.bmp w katalogu, w ktorym znajduje 
+		* sie plik wykonywalny.
 		*/
 		void saveButtonPressed() const;
 
 	private:
-		sf::RenderWindow& m_window; //!< przechowuje obiekt ???
-		tgui::Gui& m_gui; //!< przechowuje obiekt ???
+		sf::RenderWindow& m_window; //!< Okno w ktorym rysowane jest GUI
+		tgui::Gui& m_gui; //!< GUI sluzace do komunikacji z uzytkownikiem
 		DrawFigures& m_loadedData; //!< Parametry wszystkich figur
 		tgui::Theme::Ptr theme = tgui::Theme::create("theme/Black.txt"); //!< Motyw interfejsu
 		int m_current_number; //!< Indeks aktualnej figury
 		int m_current_vertex; //!< Indeks aktualnego wierzcholka
+		
+		/**
+		* \brief Przygotowanie interfejsu uzytkownika
+		*/
+		void preparePanel();
 
 		tgui::EditBox::Ptr changeValues = theme->load("Editbox"); //!< Pole do wpisywania porzadanych parametrow figury
 		tgui::ComboBox::Ptr selectParameterToChange = theme->load("ComboBox"); //!< Combobox - wybor parametru figury do zmiany

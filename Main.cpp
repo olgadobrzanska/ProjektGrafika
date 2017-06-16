@@ -1,31 +1,11 @@
 #include "Main.h"
 
 
-void loadGui(tgui::Gui& gui, DrawFigures& loadedData)
-{
-	tgui::Theme::Ptr theme = tgui::Theme::create("theme/Black.txt");
-	
-	tgui::EditBox::Ptr loadFromFilename = theme->load("Editbox");
-	loadFromFilename->setSize(140, 30);
-	loadFromFilename->setPosition(5, 5);
-	loadFromFilename->setDefaultText("File name");
-	loadFromFilename->setTextSize(14);
-	gui.add(loadFromFilename, "loadFromFilename");
-
-	tgui::Button::Ptr loadFromSubmit = theme->load("Button");
-	loadFromSubmit->setSize(40, 30);
-	loadFromSubmit->setText("Load");
-	loadFromSubmit->setPosition(155, 5);
-	gui.add(loadFromSubmit, "loadFromSubmit");
-
-	loadFromSubmit->connect("pressed", &DrawFigures::LoadFromFile, &loadedData, loadFromFilename);
-	
-}
-
-
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1000, 600), "Projekt - Dobrzanska, Kusarek, Augustyn", sf::Style::Titlebar | sf::Style::Close);
+	sf::ContextSettings settings;
+	settings.antialiasingLevel = 8;
+	sf::RenderWindow window(sf::VideoMode(1000, 600), "Projekt - Dobrzanska, Kusarek, Augustyn", sf::Style::Titlebar | sf::Style::Close, settings);
 	tgui::Gui gui(window);
 	window.setFramerateLimit(30);
 	DrawFigures loadedData;
@@ -38,38 +18,48 @@ int main()
 	guiBackground.setFillColor(sf::Color::Black);
 	guiBackground.setPosition(0., 0.);
 	guiBackground.setSize(sf::Vector2f(200., 600.));
-	Gui::Panel newPanel(window, gui, loadedData);
-	newPanel.preparePanel();
+
+
 	try
 	{
-		loadGui(gui, loadedData);
-	}
-	catch (const tgui::Exception& e)
-	{
-		std::cerr << "Failed to load TGUI: " << e.what() << std::endl;
-		return 1;
-	}
-
-
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
+		Gui::Panel newPanel(window, gui, loadedData);
+		while (window.isOpen())
 		{
-			if (event.type == sf::Event::Closed)
-				window.close();
+			sf::Event event;
+			while (window.pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+					window.close();
 
-			gui.handleEvent(event);
+				gui.handleEvent(event);
+			}
+
+			window.clear();
+			window.draw(borderBox);
+			window.draw(loadedData);
+			window.draw(guiBackground);
+			gui.draw();
+			newPanel.updatePanel();
+			window.display();
 		}
-
-		window.clear();
-		window.draw(borderBox);
-		window.draw(loadedData);
-		window.draw(guiBackground);
-		gui.draw();
-		newPanel.updatePanel();
-		window.display();
 	}
+	catch (const tgui::Exception&)
+	{
+		while (window.isOpen())
+		{
+			sf::Event event;
+			while (window.pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+					window.close();
+
+			}
+
+			window.clear();
+			window.display();
+		}
+	}
+
 
 
 	return EXIT_SUCCESS;
