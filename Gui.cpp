@@ -61,11 +61,12 @@ void Gui::Panel::preparePanel()
 	selectParameterToChange->setSize(190, 30);
 	selectParameterToChange->setPosition(5, 160);
 	selectParameterToChange->setTextSize(12);
-	selectParameterToChange->addItem("Change Color Line");
-	selectParameterToChange->addItem("Change Fulfil Color");
+	selectParameterToChange->addItem("Change Outline Color");
+	selectParameterToChange->addItem("Change Fill Color");
 	selectParameterToChange->addItem("Change Border Size");
 	selectParameterToChange->addItem("Opacity");
 	selectParameterToChange->addItem("Vertex Coords");
+	selectParameterToChange->addItem("Radius/Vertex #");
 	selectParameterToChange->disable(true);
 	m_gui.add(selectParameterToChange, "selectParameterToChange");
 	
@@ -87,32 +88,38 @@ void Gui::Panel::preparePanel()
 	refreshButton->disable(true);
 	m_gui.add(refreshButton, "refreshButton");
 
+	figureName->setSize(140, 60);
+	figureName->setPosition(5, 280);
+	figureName->setText("");
+	figureName->setTextSize(14);
+	m_gui.add(figureName, "figureName");
+
 	lineColorParameter->setSize(140, 60);
-	lineColorParameter->setPosition(5, 280);
-	lineColorParameter->setText("Line Color: \n\n");
+	lineColorParameter->setPosition(5, 300);
+	lineColorParameter->setText("Outline Color: \n\n");
 	lineColorParameter->setTextSize(14);
 	m_gui.add(lineColorParameter, "lineColorParameter");
 
 	fulfilColorParameter->setSize(140, 60);
-	fulfilColorParameter->setPosition(5, 330);
-	fulfilColorParameter->setText("Fulfill Color: \n\n");
+	fulfilColorParameter->setPosition(5, 350);
+	fulfilColorParameter->setText("Fill Color: \n\n");
 	fulfilColorParameter->setTextSize(14);
 	m_gui.add(fulfilColorParameter, "fulfilColorParameter");
 
 	borderSizeParameter->setSize(140, 60);
-	borderSizeParameter->setPosition(5, 380);
+	borderSizeParameter->setPosition(5, 400);
 	borderSizeParameter->setText("Border Size: \n\n");
 	borderSizeParameter->setTextSize(14);
 	m_gui.add(borderSizeParameter, "borderSizeParameter");
 
 	opacityParameter->setSize(140, 60);
-	opacityParameter->setPosition(5, 430);
+	opacityParameter->setPosition(5, 450);
 	opacityParameter->setText("Opacity: \n\n");
 	opacityParameter->setTextSize(14);
 	m_gui.add(opacityParameter, "opacityParameter");
 
 	vertexesParameter->setSize(140,60 );
-	vertexesParameter->setPosition(5, 480);
+	vertexesParameter->setPosition(5, 500);
 	vertexesParameter->setText("Vertex Coords: \n\n");
 	vertexesParameter->setTextSize(14);
 	m_gui.add(vertexesParameter, "vertexesParameter");
@@ -132,7 +139,7 @@ void Gui::Panel::preparePanel()
 	m_gui.add(downArrowVertex, "downArrowVertex");
 
 	saveButton->setSize(110, 30);
-	saveButton->setText("Save");
+	saveButton->setText("Save to file");
 	saveButton->setPosition(45, 560);
 	saveButton->setTextSize(14);
 	saveButton->connect("pressed", &Gui::Panel::saveButtonPressed, this);
@@ -187,40 +194,19 @@ void Gui::Panel::updatePanel() {
 	if (!downArrowVertex->isEnabled())
 		downArrowVertex->enable();
 
-	if (m_loadedData.GetFigureType(m_current_number) == 1) {
-		updateLineColorInfo();
-		updateFulfilColorInfo();
-		updateBorderSize();
-		updateOpacity();
-		updateVertexes();
-		checkParameterToChange();
-	}
-	if (m_loadedData.GetFigureType(m_current_number) == 2) {
-		
-		updateLineColorInfo();
-		updateFulfilColorInfo();
-		updateBorderSize();
-		updateOpacity();
-		updateVertexes();
-		checkParameterToChange();
-	}
-	if (m_loadedData.GetFigureType(m_current_number) == 3) {
-		updateLineColorInfo();
+	if (m_loadedData.GetFigureType(m_current_number) == 3)
 		fulfilColorParameter->setText("");
-		updateBorderSize();
-		updateOpacity();
-		updateVertexes();
-		checkParameterToChange();
-	}
-	if (m_loadedData.GetFigureType(m_current_number) == 4) {
-		updateLineColorInfo();
+	else
 		updateFulfilColorInfo();
-		updateBorderSize();
-		updateOpacity();
-		updateVertexes();
-		checkParameterToChange();
-	}
+	updateLineColorInfo();
+	updateBorderSize();
+	updateOpacity();
+	updateVertexes();
+	updateFigureName();
+	checkParameterToChange();
+
 	
+
 }
 
 void Gui::Panel::leftArrowPressed() {
@@ -233,6 +219,8 @@ void Gui::Panel::leftArrowPressed() {
 		ss << m_current_number;
 		std::string tekst = ss.str();
 		currentPosition->setText(tekst);
+		changeValues->setText("");
+		selectParameterToChange->setSelectedItemByIndex(-1);
 	}
 
 }
@@ -246,6 +234,8 @@ void Gui::Panel::rightArrowPressed() {
 		ss << m_current_number;
 		std::string tekst = ss.str();
 		currentPosition->setText(tekst);
+		changeValues->setText("");
+		selectParameterToChange->setSelectedItemByIndex(-1);
 	}
 }
 
@@ -301,9 +291,39 @@ void Gui::Panel::downArrowVertexPressed() {
 		vertexesParameter->setText(tekst);
 	}
 }
+
+void Gui::Panel::updateFigureName()
+{
+	std::string figurename;
+	if (m_loadedData.GetCountOfElements() != 0)
+		switch (m_loadedData.GetFigureType(m_current_number))
+		{
+		case 1:
+			figurename = "Circle";
+			break;
+		case 2:
+			figurename = "Rectangle";
+			break;
+		case 3:
+			figurename = "Line";
+			break;
+		case 4:
+			figurename = "Polygon";
+			break;
+		case 5:
+			figurename = "Plain polygon";
+			break;
+		default:
+			figurename = "";
+		}
+	else
+		figurename = "";
+	figureName->setText(figurename);
+}
+
 void Gui::Panel::updateLineColorInfo() {
 	std::ostringstream ss;
-	ss << "Line Color: \nR:";
+	ss << "Outline Color: \nR:";
 	ss << m_loadedData.GetOutlineR(m_current_number);
 	ss << " G:";
 	ss << m_loadedData.GetOutlineG(m_current_number);
@@ -315,7 +335,7 @@ void Gui::Panel::updateLineColorInfo() {
 
 void Gui::Panel::updateFulfilColorInfo() {
 	std::ostringstream ss;
-	ss << "Fulfill Color: \nR:";
+	ss << "Fill Color: \nR:";
 	ss << m_loadedData.GetInR(m_current_number);
 	ss << " G:";
 	ss << m_loadedData.GetInG(m_current_number);
@@ -344,7 +364,10 @@ void Gui::Panel::updateOpacity() {
 void Gui::Panel::updateVertexes() {
 	
 	std::ostringstream ss;
-	ss << "Vertex Coords : \n";
+	if (m_loadedData.GetFigureType(m_current_number) == DrawFigures::POLYGONCIRCLE && m_current_vertex == 1)
+		ss << "Radius / Vertexes: \n";
+	else
+		ss << "Vertex Coords : \n";
 	ss << m_current_vertex+1;
 	ss << ": ";
 	ss << m_loadedData.GetPointX(m_current_number,m_current_vertex);
@@ -361,7 +384,7 @@ void Gui::Panel::checkParameterToChange() {
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 1) {
 		if (m_loadedData.GetFigureType(m_current_number) == DrawFigures::LINE)
-			selectParameterToChange->setSelectedItemByIndex(0);
+			selectParameterToChange->setSelectedItemByIndex(-1);
 		changeValues->setDefaultText("R G B");
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 2) {
@@ -372,6 +395,12 @@ void Gui::Panel::checkParameterToChange() {
 	}
 	if (selectParameterToChange->getSelectedItemIndex() == 4) {
 		changeValues->setDefaultText("index x y");
+	}
+	if (selectParameterToChange->getSelectedItemIndex() == 5)
+	{
+		if (m_loadedData.GetFigureType(m_current_number) != DrawFigures::POLYGONCIRCLE)
+			selectParameterToChange->setSelectedItemByIndex(-1);
+		changeValues->setDefaultText("Radius/Vertexes #");
 	}
 }
 
@@ -434,6 +463,17 @@ void Gui::Panel::refreshButtonPressed() {
 			m_loadedData.SetPointX(newX, m_current_number,pointID-1);
 			m_loadedData.SetPointY(newY, m_current_number,pointID-1);
 		}
+	}
+	if (selectParameterToChange->getSelectedItemIndex() == 5)
+	{
+		int newX, newY;
+		std::istringstream iss(changeValues->getText());
+		iss >> newX >> newY;
+		if (!iss)
+			return;
+		m_loadedData.SetPointX(newX, m_current_number, 1);
+		m_loadedData.SetPointY(newY, m_current_number, 1);
+		
 	}
 }
 

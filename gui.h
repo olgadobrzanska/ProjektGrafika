@@ -17,6 +17,7 @@ namespace Gui
 		void rightArrowPressed();
 		void upArrowVertexPressed();
 		void downArrowVertexPressed();
+		void updateFigureName();
 		void updateLineColorInfo();
 		void updateFulfilColorInfo();
 		void updateBorderSize();
@@ -45,6 +46,7 @@ namespace Gui
 		tgui::Label::Ptr changeOrder = theme->load("Label");
 		tgui::Button::Ptr downArrow = theme->load("Button");
 		tgui::Button::Ptr upArrow = theme->load("Button");
+		tgui::Label::Ptr figureName = theme->load("Label");
 		tgui::Label::Ptr lineColorParameter = theme->load("Label");
 		tgui::Label::Ptr fulfilColorParameter = theme->load("Label");
 		tgui::Label::Ptr borderSizeParameter = theme->load("Label");

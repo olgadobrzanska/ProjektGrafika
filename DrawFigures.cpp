@@ -260,11 +260,16 @@ bool DrawFigures::m_isCorrectSizeOfVector(const std::vector<int>& data)
 
 sf::Drawable* DrawFigures::m_addLine(std::vector<int>& data)
 {
-	if (data[7] > data[9])
-		std::swap(data[7], data[9]);
 	int colorR = m_proper_value_0_255(data[1]), colorG = m_proper_value_0_255(data[2]), colorB = m_proper_value_0_255(data[3]);
 	int borderSize = data[4], opacity = m_proper_value_0_255(data[5]);
+	if (borderSize == 0)
+		opacity = 0;
 	int startX = data[6], startY = data[7], endX = data[8], endY = data[9];
+	if (endX < startX)
+	{
+		std::swap(endX, startX);
+		std::swap(endY, startY);
+	}
 	sf::RectangleShape* line = new sf::RectangleShape;
 	line->setPosition((float)(m_xOffset + startX), (float)(m_yOffset + startY));
 	line->setSize(sf::Vector2f((float)(std::sqrt((endX - startX)*(endX-startX)+(endY-startY)*(endY-startY))), 1.));
@@ -293,8 +298,8 @@ sf::Drawable* DrawFigures::m_addCircle(std::vector<int>& data)
 	sf::CircleShape* circle = new sf::CircleShape();
 	circle->setOutlineColor(sf::Color(colorR, colorG, colorB, opacity));
 	circle->setFillColor(sf::Color(insideR, insideG, insideB, opacity));
-	circle->setRadius((float)(endX - startX));
-	circle->setPosition((float)(m_xOffset+startX), (float)(m_yOffset+startY));
+	circle->setRadius((float)std::sqrt((endX - startX)*(endX - startX) + (endY - startY)*(endY - startY)));
+	circle->setPosition((float)(m_xOffset+startX-circle->getRadius()), (float)(m_yOffset+startY-circle->getRadius()));
 	circle->setOutlineThickness((float)borderSize);
 
 	sf::Drawable* addedCircle = circle;

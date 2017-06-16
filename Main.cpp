@@ -27,12 +27,17 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1000, 600), "Projekt - Dobrzanska, Kusarek, Augustyn", sf::Style::Titlebar | sf::Style::Close);
 	tgui::Gui gui(window);
+	window.setFramerateLimit(30);
 	DrawFigures loadedData;
 	sf::RectangleShape borderBox(sf::Vector2f(200., 0.));
 	borderBox.setOutlineColor(sf::Color::Black);
 	borderBox.setFillColor(sf::Color::White);
 	borderBox.setPosition(200., 0.);
 	borderBox.setSize(sf::Vector2f(800., 600.));
+	sf::RectangleShape guiBackground;
+	guiBackground.setFillColor(sf::Color::Black);
+	guiBackground.setPosition(0., 0.);
+	guiBackground.setSize(sf::Vector2f(200., 600.));
 	Gui::Panel newPanel(window, gui, loadedData);
 	newPanel.preparePanel();
 	try
@@ -60,6 +65,7 @@ int main()
 		window.clear();
 		window.draw(borderBox);
 		window.draw(loadedData);
+		window.draw(guiBackground);
 		gui.draw();
 		newPanel.updatePanel();
 		window.display();
