@@ -1,0 +1,1319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projekt z Podstaw Grafiki Komputerowej: Dokumentacja klasy DrawFigures</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projekt z Podstaw Grafiki Komputerowej
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_draw_figures.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Typy publiczne</a> &#124;
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="#pro-attribs">Atrybuty chronione</a> &#124;
+<a href="class_draw_figures-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja klasy DrawFigures</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Dziedziczy Drawable.</p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Typy publiczne</h2></td></tr>
+<tr class="memitem:abeebe0e80fb875a9eaa6ed251fabe45a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a">FigType</a> { <br />
+&#160;&#160;<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45aad9566447f0ca0c0b271f90945a67b670">CIRCLE</a> = 1, 
+<br />
+&#160;&#160;<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45aa3526ff20c9b4d468b234f66554145e05">RECTANGLE</a> = 2, 
+<br />
+&#160;&#160;<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45aaaa724ce9727cb9ffb9dee5320b873e0f">LINE</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45aada29d6ed9343d122a6963fc1baa080eb">POLYGON</a> = 4, 
+<br />
+&#160;&#160;<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45aac4f86558d7987ed03afd95a1765be1d8">POLYGONCIRCLE</a> = 5
+<br />
+ }<tr class="memdesc:abeebe0e80fb875a9eaa6ed251fabe45a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typy mozliwych do wyrysowania figur.  <a href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a">Więcej...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:abeebe0e80fb875a9eaa6ed251fabe45a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:aa80a0c674f90a231103578c205ad4787"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#aa80a0c674f90a231103578c205ad4787">DrawFigures</a> ()</td></tr>
+<tr class="separator:aa80a0c674f90a231103578c205ad4787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3b112b6d05f0e85b02ac54a659f696c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#ad3b112b6d05f0e85b02ac54a659f696c">LoadFromFile</a> (tgui::EditBox::Ptr file)</td></tr>
+<tr class="memdesc:ad3b112b6d05f0e85b02ac54a659f696c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja wczytujaca dane o figurach.  <a href="#ad3b112b6d05f0e85b02ac54a659f696c">Więcej...</a><br /></td></tr>
+<tr class="separator:ad3b112b6d05f0e85b02ac54a659f696c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8922ebd639f82f7eeea5063291d404f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a8922ebd639f82f7eeea5063291d404f3">draw</a> (sf::RenderTarget &amp;target, sf::RenderStates states) const override</td></tr>
+<tr class="separator:a8922ebd639f82f7eeea5063291d404f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a6ae5eae331eeceebe9238603435073"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a6a6ae5eae331eeceebe9238603435073">~DrawFigures</a> ()</td></tr>
+<tr class="separator:a6a6ae5eae331eeceebe9238603435073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad339aa89b1528428f86f00a588b1ea5a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#ad339aa89b1528428f86f00a588b1ea5a">GetCountOfElements</a> () const</td></tr>
+<tr class="memdesc:ad339aa89b1528428f86f00a588b1ea5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liczba figur wczytanych z pliku.  <a href="#ad339aa89b1528428f86f00a588b1ea5a">Więcej...</a><br /></td></tr>
+<tr class="separator:ad339aa89b1528428f86f00a588b1ea5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e13ad69ccfeb5e0ce966b52b1074eed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a9e13ad69ccfeb5e0ce966b52b1074eed">GetFigureType</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:a9e13ad69ccfeb5e0ce966b52b1074eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typ rysowanej figury.  <a href="#a9e13ad69ccfeb5e0ce966b52b1074eed">Więcej...</a><br /></td></tr>
+<tr class="separator:a9e13ad69ccfeb5e0ce966b52b1074eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c938c1fe4644311daaa03fc95909fe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a2c938c1fe4644311daaa03fc95909fe6">GetOutlineR</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:a2c938c1fe4644311daaa03fc95909fe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skladowa R koloru obramowania figury.  <a href="#a2c938c1fe4644311daaa03fc95909fe6">Więcej...</a><br /></td></tr>
+<tr class="separator:a2c938c1fe4644311daaa03fc95909fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb3e09e5d612bc201aa1764fb399cdd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#abb3e09e5d612bc201aa1764fb399cdd9">SetOutlineR</a> (int value, const int &amp;index)</td></tr>
+<tr class="memdesc:abb3e09e5d612bc201aa1764fb399cdd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej wartosci skladowej R koloru obramowania.  <a href="#abb3e09e5d612bc201aa1764fb399cdd9">Więcej...</a><br /></td></tr>
+<tr class="separator:abb3e09e5d612bc201aa1764fb399cdd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29d551aa76d2805cee2b1d25bd50042e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a29d551aa76d2805cee2b1d25bd50042e">GetOutlineG</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:a29d551aa76d2805cee2b1d25bd50042e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skladowa G koloru obramowania figury.  <a href="#a29d551aa76d2805cee2b1d25bd50042e">Więcej...</a><br /></td></tr>
+<tr class="separator:a29d551aa76d2805cee2b1d25bd50042e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03ce51954643646b04d8fccc3ea7490f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a03ce51954643646b04d8fccc3ea7490f">SetOutlineG</a> (int value, const int &amp;index)</td></tr>
+<tr class="memdesc:a03ce51954643646b04d8fccc3ea7490f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej wartosci skladowej G koloru obramowania.  <a href="#a03ce51954643646b04d8fccc3ea7490f">Więcej...</a><br /></td></tr>
+<tr class="separator:a03ce51954643646b04d8fccc3ea7490f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15891a940583f8297b2407c0e6d7b4f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#ad15891a940583f8297b2407c0e6d7b4f">GetOutlineB</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:ad15891a940583f8297b2407c0e6d7b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skladowa B koloru obramowania figury.  <a href="#ad15891a940583f8297b2407c0e6d7b4f">Więcej...</a><br /></td></tr>
+<tr class="separator:ad15891a940583f8297b2407c0e6d7b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a530822e24ab3f062b99ce90745808024"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a530822e24ab3f062b99ce90745808024">SetOutlineB</a> (int value, const int &amp;index)</td></tr>
+<tr class="memdesc:a530822e24ab3f062b99ce90745808024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej wartosci skladowej B koloru obramowania.  <a href="#a530822e24ab3f062b99ce90745808024">Więcej...</a><br /></td></tr>
+<tr class="separator:a530822e24ab3f062b99ce90745808024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7682932711f58ad54dc42b352fe5b872"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a7682932711f58ad54dc42b352fe5b872">GetInR</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:a7682932711f58ad54dc42b352fe5b872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skladowa R koloru wypelnienia figury.  <a href="#a7682932711f58ad54dc42b352fe5b872">Więcej...</a><br /></td></tr>
+<tr class="separator:a7682932711f58ad54dc42b352fe5b872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee709bee28fbabf0e1952afebaed2194"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#aee709bee28fbabf0e1952afebaed2194">SetInR</a> (int value, const int &amp;index)</td></tr>
+<tr class="memdesc:aee709bee28fbabf0e1952afebaed2194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej wartosci skladowej R koloru wypelnienia.  <a href="#aee709bee28fbabf0e1952afebaed2194">Więcej...</a><br /></td></tr>
+<tr class="separator:aee709bee28fbabf0e1952afebaed2194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2ce7d0a21d456e47af4b50cbe6fcd9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a3a2ce7d0a21d456e47af4b50cbe6fcd9">GetInG</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:a3a2ce7d0a21d456e47af4b50cbe6fcd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skladowa G koloru wypelnienia figury.  <a href="#a3a2ce7d0a21d456e47af4b50cbe6fcd9">Więcej...</a><br /></td></tr>
+<tr class="separator:a3a2ce7d0a21d456e47af4b50cbe6fcd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac27e9c09d94dca9d697220c10534ff2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#ac27e9c09d94dca9d697220c10534ff2f">SetInG</a> (int value, const int &amp;index)</td></tr>
+<tr class="memdesc:ac27e9c09d94dca9d697220c10534ff2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej wartosci skladowej G koloru wypelnienia.  <a href="#ac27e9c09d94dca9d697220c10534ff2f">Więcej...</a><br /></td></tr>
+<tr class="separator:ac27e9c09d94dca9d697220c10534ff2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d4ae6dbcddffb1f6a518818ac57c815"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a6d4ae6dbcddffb1f6a518818ac57c815">GetInB</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:a6d4ae6dbcddffb1f6a518818ac57c815"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skladowa B koloru wypelnienia figury.  <a href="#a6d4ae6dbcddffb1f6a518818ac57c815">Więcej...</a><br /></td></tr>
+<tr class="separator:a6d4ae6dbcddffb1f6a518818ac57c815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e9db87cf98ef0f045844f03afd82c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a03e9db87cf98ef0f045844f03afd82c3">SetInB</a> (int value, const int &amp;index)</td></tr>
+<tr class="memdesc:a03e9db87cf98ef0f045844f03afd82c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej wartosci skladowej B koloru wypelnienia.  <a href="#a03e9db87cf98ef0f045844f03afd82c3">Więcej...</a><br /></td></tr>
+<tr class="separator:a03e9db87cf98ef0f045844f03afd82c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a999c1ab15dc50ad42dfd7cf54107d5c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a999c1ab15dc50ad42dfd7cf54107d5c5">GetBorderSize</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:a999c1ab15dc50ad42dfd7cf54107d5c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grubosc obramowania figury.  <a href="#a999c1ab15dc50ad42dfd7cf54107d5c5">Więcej...</a><br /></td></tr>
+<tr class="separator:a999c1ab15dc50ad42dfd7cf54107d5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ea447f27c7bc59af32991e1367ae298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a2ea447f27c7bc59af32991e1367ae298">SetBorderSize</a> (int value, const int &amp;index)</td></tr>
+<tr class="memdesc:a2ea447f27c7bc59af32991e1367ae298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej grubosci obramowania figury.  <a href="#a2ea447f27c7bc59af32991e1367ae298">Więcej...</a><br /></td></tr>
+<tr class="separator:a2ea447f27c7bc59af32991e1367ae298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0993fed2b5d9d7449d94c348ca87d6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#ad0993fed2b5d9d7449d94c348ca87d6b">GetOpacity</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:ad0993fed2b5d9d7449d94c348ca87d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Przezroczystosc figury.  <a href="#ad0993fed2b5d9d7449d94c348ca87d6b">Więcej...</a><br /></td></tr>
+<tr class="separator:ad0993fed2b5d9d7449d94c348ca87d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b2f18b15088aafa9c2e3a193d150420"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a2b2f18b15088aafa9c2e3a193d150420">SetOpacity</a> (int value, const int &amp;index)</td></tr>
+<tr class="memdesc:a2b2f18b15088aafa9c2e3a193d150420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej przezroczystosci figury.  <a href="#a2b2f18b15088aafa9c2e3a193d150420">Więcej...</a><br /></td></tr>
+<tr class="separator:a2b2f18b15088aafa9c2e3a193d150420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ab43bf273a9b3b148d57f3e0c49c429"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a9ab43bf273a9b3b148d57f3e0c49c429">GetPointX</a> (const int &amp;index, const int &amp;pointNo) const</td></tr>
+<tr class="memdesc:a9ab43bf273a9b3b148d57f3e0c49c429"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skladowa X-owa wspolrzednych wierzcholka.  <a href="#a9ab43bf273a9b3b148d57f3e0c49c429">Więcej...</a><br /></td></tr>
+<tr class="separator:a9ab43bf273a9b3b148d57f3e0c49c429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89998d1c35919e272e846aeb2d0ee05e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a89998d1c35919e272e846aeb2d0ee05e">SetPointX</a> (int value, const int &amp;index, const int &amp;pointNo)</td></tr>
+<tr class="memdesc:a89998d1c35919e272e846aeb2d0ee05e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej wartosci wspolrzednej X wierzcholka.  <a href="#a89998d1c35919e272e846aeb2d0ee05e">Więcej...</a><br /></td></tr>
+<tr class="separator:a89998d1c35919e272e846aeb2d0ee05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0efb97e1a8bc9704d3d5be94245041ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a0efb97e1a8bc9704d3d5be94245041ba">GetPointY</a> (const int &amp;index, const int &amp;pointNo) const</td></tr>
+<tr class="memdesc:a0efb97e1a8bc9704d3d5be94245041ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skladowa Y-owa wspolrzednych wierzcholka.  <a href="#a0efb97e1a8bc9704d3d5be94245041ba">Więcej...</a><br /></td></tr>
+<tr class="separator:a0efb97e1a8bc9704d3d5be94245041ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b82ec55e7c8507256edc9ad0c6d1da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#ae0b82ec55e7c8507256edc9ad0c6d1da">SetPointY</a> (int value, const int &amp;index, const int &amp;pointNo)</td></tr>
+<tr class="memdesc:ae0b82ec55e7c8507256edc9ad0c6d1da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nowej wartosci wspolrzednej Y wierzcholka.  <a href="#ae0b82ec55e7c8507256edc9ad0c6d1da">Więcej...</a><br /></td></tr>
+<tr class="separator:ae0b82ec55e7c8507256edc9ad0c6d1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2970c6d05936653c0ed276554a633bf7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a2970c6d05936653c0ed276554a633bf7">GetVertexCount</a> (const int &amp;index) const</td></tr>
+<tr class="memdesc:a2970c6d05936653c0ed276554a633bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ilosc wierzcholkow uzytych do wyrysowania figury.  <a href="#a2970c6d05936653c0ed276554a633bf7">Więcej...</a><br /></td></tr>
+<tr class="separator:a2970c6d05936653c0ed276554a633bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ac7571a02c6cc429829e85aa62a399"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a26ac7571a02c6cc429829e85aa62a399">ChangeLayers</a> (const int &amp;layerID, bool goRight)</td></tr>
+<tr class="memdesc:a26ac7571a02c6cc429829e85aa62a399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zamiana sasiadujacych warstw kolejnoscia miedzy soba.  <a href="#a26ac7571a02c6cc429829e85aa62a399">Więcej...</a><br /></td></tr>
+<tr class="separator:a26ac7571a02c6cc429829e85aa62a399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe5d42fe91cfad36b54b0c5b52e0523f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#afe5d42fe91cfad36b54b0c5b52e0523f">blinkFigure</a> (const int &amp;figID)</td></tr>
+<tr class="memdesc:afe5d42fe91cfad36b54b0c5b52e0523f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kontroluje miganie przy zmianie aktualnie obslugiwanej figury.  <a href="#afe5d42fe91cfad36b54b0c5b52e0523f">Więcej...</a><br /></td></tr>
+<tr class="separator:afe5d42fe91cfad36b54b0c5b52e0523f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:a3313a6637574f41fc156d7ccd2bdeab8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a3313a6637574f41fc156d7ccd2bdeab8">GetVertexCount</a> (const std::vector&lt; int &gt; &amp;data)</td></tr>
+<tr class="memdesc:a3313a6637574f41fc156d7ccd2bdeab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ilosc wierzcholkow uzytych do wyrysowania figury.  <a href="#a3313a6637574f41fc156d7ccd2bdeab8">Więcej...</a><br /></td></tr>
+<tr class="separator:a3313a6637574f41fc156d7ccd2bdeab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Atrybuty chronione</h2></td></tr>
+<tr class="memitem:a21a64cb9a1b97273a032faf016d3084b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; sf::Drawable * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a21a64cb9a1b97273a032faf016d3084b">m_loadedFigures</a></td></tr>
+<tr class="memdesc:a21a64cb9a1b97273a032faf016d3084b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Figury gotowe do wyrysowania.  <a href="#a21a64cb9a1b97273a032faf016d3084b">Więcej...</a><br /></td></tr>
+<tr class="separator:a21a64cb9a1b97273a032faf016d3084b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f025a2f7e8b56d91d20cff068914a42"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_draw_figures.html#a5f025a2f7e8b56d91d20cff068914a42">m_loadedfigures_data</a></td></tr>
+<tr class="memdesc:a5f025a2f7e8b56d91d20cff068914a42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dane wyrysowywanych figur.  <a href="#a5f025a2f7e8b56d91d20cff068914a42">Więcej...</a><br /></td></tr>
+<tr class="separator:a5f025a2f7e8b56d91d20cff068914a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja składowych wyliczanych</h2>
+<a id="abeebe0e80fb875a9eaa6ed251fabe45a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeebe0e80fb875a9eaa6ed251fabe45a">&#9670;&nbsp;</a></span>FigType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a">DrawFigures::FigType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Typy mozliwych do wyrysowania figur. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Wartości wyliczeń</th></tr><tr><td class="fieldname"><a id="abeebe0e80fb875a9eaa6ed251fabe45aad9566447f0ca0c0b271f90945a67b670"></a>CIRCLE&#160;</td><td class="fielddoc"><p>Kolo. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abeebe0e80fb875a9eaa6ed251fabe45aa3526ff20c9b4d468b234f66554145e05"></a>RECTANGLE&#160;</td><td class="fielddoc"><p>Prostokat. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abeebe0e80fb875a9eaa6ed251fabe45aaaa724ce9727cb9ffb9dee5320b873e0f"></a>LINE&#160;</td><td class="fielddoc"><p>Linia. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abeebe0e80fb875a9eaa6ed251fabe45aada29d6ed9343d122a6963fc1baa080eb"></a>POLYGON&#160;</td><td class="fielddoc"><p>Wielokat. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abeebe0e80fb875a9eaa6ed251fabe45aac4f86558d7987ed03afd95a1765be1d8"></a>POLYGONCIRCLE&#160;</td><td class="fielddoc"><p>Wielokat foremny. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="aa80a0c674f90a231103578c205ad4787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa80a0c674f90a231103578c205ad4787">&#9670;&nbsp;</a></span>DrawFigures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DrawFigures::DrawFigures </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a6ae5eae331eeceebe9238603435073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a6ae5eae331eeceebe9238603435073">&#9670;&nbsp;</a></span>~DrawFigures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DrawFigures::~DrawFigures </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="afe5d42fe91cfad36b54b0c5b52e0523f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe5d42fe91cfad36b54b0c5b52e0523f">&#9670;&nbsp;</a></span>blinkFigure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::blinkFigure </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>figID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Kontroluje miganie przy zmianie aktualnie obslugiwanej figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">figID</td><td>ID figury ktora ma migac </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a26ac7571a02c6cc429829e85aa62a399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26ac7571a02c6cc429829e85aa62a399">&#9670;&nbsp;</a></span>ChangeLayers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DrawFigures::ChangeLayers </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>layerID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>goRight</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zamiana sasiadujacych warstw kolejnoscia miedzy soba. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">layerID</td><td>ID przenoszonej warstwy </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">goRight</td><td>Jesli prawda, zamieniamy z warstwa o ID wiekszym<br />
+Jesli falsz, zamieniamy z wartswa o ID mniejszym </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Prawda, jesli zamiana poprawna<br />
+ Falsz, jesli zamiana sie nie powiodla </dd></dl>
+
+</div>
+</div>
+<a id="a8922ebd639f82f7eeea5063291d404f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8922ebd639f82f7eeea5063291d404f3">&#9670;&nbsp;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::draw </td>
+          <td>(</td>
+          <td class="paramtype">sf::RenderTarget &amp;&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sf::RenderStates&#160;</td>
+          <td class="paramname"><em>states</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a999c1ab15dc50ad42dfd7cf54107d5c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a999c1ab15dc50ad42dfd7cf54107d5c5">&#9670;&nbsp;</a></span>GetBorderSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetBorderSize </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Grubosc obramowania figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Grubosc linii (w pikselach) </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a2ea447f27c7bc59af32991e1367ae298" title="Ustawienie nowej grubosci obramowania figury. ">SetBorderSize</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad339aa89b1528428f86f00a588b1ea5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad339aa89b1528428f86f00a588b1ea5a">&#9670;&nbsp;</a></span>GetCountOfElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetCountOfElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liczba figur wczytanych z pliku. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>Liczba figur </dd></dl>
+
+</div>
+</div>
+<a id="a9e13ad69ccfeb5e0ce966b52b1074eed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e13ad69ccfeb5e0ce966b52b1074eed">&#9670;&nbsp;</a></span>GetFigureType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetFigureType </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Typ rysowanej figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w kontenerze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Typ figury (<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a" title="Typy mozliwych do wyrysowania figur. ">FigType</a>) </dd></dl>
+
+</div>
+</div>
+<a id="a6d4ae6dbcddffb1f6a518818ac57c815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d4ae6dbcddffb1f6a518818ac57c815">&#9670;&nbsp;</a></span>GetInB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetInB </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skladowa B koloru wypelnienia figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Skladowa B obramowania </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a03e9db87cf98ef0f045844f03afd82c3" title="Ustawienie nowej wartosci skladowej B koloru wypelnienia. ">SetInB</a> </dd></dl>
+
+</div>
+</div>
+<a id="a3a2ce7d0a21d456e47af4b50cbe6fcd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2ce7d0a21d456e47af4b50cbe6fcd9">&#9670;&nbsp;</a></span>GetInG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetInG </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skladowa G koloru wypelnienia figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Skladowa G obramowania </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#ac27e9c09d94dca9d697220c10534ff2f" title="Ustawienie nowej wartosci skladowej G koloru wypelnienia. ">SetInG</a> </dd></dl>
+
+</div>
+</div>
+<a id="a7682932711f58ad54dc42b352fe5b872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7682932711f58ad54dc42b352fe5b872">&#9670;&nbsp;</a></span>GetInR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetInR </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skladowa R koloru wypelnienia figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Skladowa R obramowania </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#aee709bee28fbabf0e1952afebaed2194" title="Ustawienie nowej wartosci skladowej R koloru wypelnienia. ">SetInR</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad0993fed2b5d9d7449d94c348ca87d6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0993fed2b5d9d7449d94c348ca87d6b">&#9670;&nbsp;</a></span>GetOpacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetOpacity </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Przezroczystosc figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w kontenerze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Aktuana przezroczystosc figury </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a2b2f18b15088aafa9c2e3a193d150420" title="Ustawienie nowej przezroczystosci figury. ">SetOpacity</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad15891a940583f8297b2407c0e6d7b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad15891a940583f8297b2407c0e6d7b4f">&#9670;&nbsp;</a></span>GetOutlineB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetOutlineB </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skladowa B koloru obramowania figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Skladowa B obramowania </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a530822e24ab3f062b99ce90745808024" title="Ustawienie nowej wartosci skladowej B koloru obramowania. ">SetOutlineB</a> </dd></dl>
+
+</div>
+</div>
+<a id="a29d551aa76d2805cee2b1d25bd50042e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29d551aa76d2805cee2b1d25bd50042e">&#9670;&nbsp;</a></span>GetOutlineG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetOutlineG </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skladowa G koloru obramowania figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Skladowa G obramowania </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a03ce51954643646b04d8fccc3ea7490f" title="Ustawienie nowej wartosci skladowej G koloru obramowania. ">SetOutlineG</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2c938c1fe4644311daaa03fc95909fe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c938c1fe4644311daaa03fc95909fe6">&#9670;&nbsp;</a></span>GetOutlineR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetOutlineR </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skladowa R koloru obramowania figury. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Skladowa R obramowania </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#abb3e09e5d612bc201aa1764fb399cdd9" title="Ustawienie nowej wartosci skladowej R koloru obramowania. ">SetOutlineR</a> </dd></dl>
+
+</div>
+</div>
+<a id="a9ab43bf273a9b3b148d57f3e0c49c429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ab43bf273a9b3b148d57f3e0c49c429">&#9670;&nbsp;</a></span>GetPointX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetPointX </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>pointNo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skladowa X-owa wspolrzednych wierzcholka. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w kontenerze </td></tr>
+    <tr><td class="paramname">pointNo</td><td>Numer wierzcholka </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Aktualna wartosc skladowej X wierzcholka </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a89998d1c35919e272e846aeb2d0ee05e" title="Ustawienie nowej wartosci wspolrzednej X wierzcholka. ">SetPointX</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0efb97e1a8bc9704d3d5be94245041ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0efb97e1a8bc9704d3d5be94245041ba">&#9670;&nbsp;</a></span>GetPointY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetPointY </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>pointNo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Skladowa Y-owa wspolrzednych wierzcholka. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w kontenerze </td></tr>
+    <tr><td class="paramname">pointNo</td><td>Numer wierzcholka </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Aktualna wartosc skladowej Y wierzcholka </dd></dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#ae0b82ec55e7c8507256edc9ad0c6d1da" title="Ustawienie nowej wartosci wspolrzednej Y wierzcholka. ">SetPointY</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2970c6d05936653c0ed276554a633bf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2970c6d05936653c0ed276554a633bf7">&#9670;&nbsp;</a></span>GetVertexCount() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DrawFigures::GetVertexCount </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ilosc wierzcholkow uzytych do wyrysowania figury. </p>
+<p>Funkcja uzyteczna glownie przy rysowaniu figur typu POLYGON (<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a" title="Typy mozliwych do wyrysowania figur. ">FigType</a>) </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Indeks figury w kontenerze m_loadedfigures_data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Ilosc punktow </dd></dl>
+
+</div>
+</div>
+<a id="a3313a6637574f41fc156d7ccd2bdeab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3313a6637574f41fc156d7ccd2bdeab8">&#9670;&nbsp;</a></span>GetVertexCount() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int DrawFigures::GetVertexCount </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ilosc wierzcholkow uzytych do wyrysowania figury. </p>
+<p>Funkcja uzyteczna glownie przy rysowaniu figur typu POLYGON (<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a" title="Typy mozliwych do wyrysowania figur. ">FigType</a>) </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Wektor przechowujacy informacje o danej figurze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Ilosc punktow </dd></dl>
+
+</div>
+</div>
+<a id="ad3b112b6d05f0e85b02ac54a659f696c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3b112b6d05f0e85b02ac54a659f696c">&#9670;&nbsp;</a></span>LoadFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DrawFigures::LoadFromFile </td>
+          <td>(</td>
+          <td class="paramtype">tgui::EditBox::Ptr&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja wczytujaca dane o figurach. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>Zmienna przechowujaca nazwe wczytywanego pliku </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Prawda, gdy odczyt poprawny; Falsz, gdy niepoprawny </dd></dl>
+
+</div>
+</div>
+<a id="a2ea447f27c7bc59af32991e1367ae298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ea447f27c7bc59af32991e1367ae298">&#9670;&nbsp;</a></span>SetBorderSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetBorderSize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej grubosci obramowania figury. </p>
+<p>Dla figury typu LINE (<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a" title="Typy mozliwych do wyrysowania figur. ">FigType</a>), grubosc 0 oznacza pominiecie figury przy rysowaniu </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w kontenerze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a999c1ab15dc50ad42dfd7cf54107d5c5" title="Grubosc obramowania figury. ">GetBorderSize</a> </dd></dl>
+
+</div>
+</div>
+<a id="a03e9db87cf98ef0f045844f03afd82c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03e9db87cf98ef0f045844f03afd82c3">&#9670;&nbsp;</a></span>SetInB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetInB </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej wartosci skladowej B koloru wypelnienia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a6d4ae6dbcddffb1f6a518818ac57c815" title="Skladowa B koloru wypelnienia figury. ">GetInB</a> </dd></dl>
+
+</div>
+</div>
+<a id="ac27e9c09d94dca9d697220c10534ff2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac27e9c09d94dca9d697220c10534ff2f">&#9670;&nbsp;</a></span>SetInG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetInG </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej wartosci skladowej G koloru wypelnienia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a3a2ce7d0a21d456e47af4b50cbe6fcd9" title="Skladowa G koloru wypelnienia figury. ">GetInG</a> </dd></dl>
+
+</div>
+</div>
+<a id="aee709bee28fbabf0e1952afebaed2194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee709bee28fbabf0e1952afebaed2194">&#9670;&nbsp;</a></span>SetInR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetInR </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej wartosci skladowej R koloru wypelnienia. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a7682932711f58ad54dc42b352fe5b872" title="Skladowa R koloru wypelnienia figury. ">GetInR</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2b2f18b15088aafa9c2e3a193d150420"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b2f18b15088aafa9c2e3a193d150420">&#9670;&nbsp;</a></span>SetOpacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetOpacity </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej przezroczystosci figury. </p>
+<p>Im wieksza wartosc, tym figura jest bardziej widoczna </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc (z przedzialu 0-255) </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w kontenerze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#ad0993fed2b5d9d7449d94c348ca87d6b" title="Przezroczystosc figury. ">GetOpacity</a> </dd></dl>
+
+</div>
+</div>
+<a id="a530822e24ab3f062b99ce90745808024"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a530822e24ab3f062b99ce90745808024">&#9670;&nbsp;</a></span>SetOutlineB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetOutlineB </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej wartosci skladowej B koloru obramowania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#ad15891a940583f8297b2407c0e6d7b4f" title="Skladowa B koloru obramowania figury. ">GetOutlineB</a> </dd></dl>
+
+</div>
+</div>
+<a id="a03ce51954643646b04d8fccc3ea7490f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03ce51954643646b04d8fccc3ea7490f">&#9670;&nbsp;</a></span>SetOutlineG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetOutlineG </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej wartosci skladowej G koloru obramowania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a29d551aa76d2805cee2b1d25bd50042e" title="Skladowa G koloru obramowania figury. ">GetOutlineG</a> </dd></dl>
+
+</div>
+</div>
+<a id="abb3e09e5d612bc201aa1764fb399cdd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb3e09e5d612bc201aa1764fb399cdd9">&#9670;&nbsp;</a></span>SetOutlineR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetOutlineR </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej wartosci skladowej R koloru obramowania. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w konenterze </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a2c938c1fe4644311daaa03fc95909fe6" title="Skladowa R koloru obramowania figury. ">GetOutlineR</a> </dd></dl>
+
+</div>
+</div>
+<a id="a89998d1c35919e272e846aeb2d0ee05e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89998d1c35919e272e846aeb2d0ee05e">&#9670;&nbsp;</a></span>SetPointX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetPointX </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>pointNo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej wartosci wspolrzednej X wierzcholka. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w kontenerze </td></tr>
+    <tr><td class="paramname">pointNo</td><td>Numer wierzcholka </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a9ab43bf273a9b3b148d57f3e0c49c429" title="Skladowa X-owa wspolrzednych wierzcholka. ">GetPointX</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae0b82ec55e7c8507256edc9ad0c6d1da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b82ec55e7c8507256edc9ad0c6d1da">&#9670;&nbsp;</a></span>SetPointY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawFigures::SetPointY </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>pointNo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nowej wartosci wspolrzednej Y wierzcholka. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Nowa wartosc </td></tr>
+    <tr><td class="paramname">index</td><td>Nr indeksu figury w kontenerze </td></tr>
+    <tr><td class="paramname">pointNo</td><td>Numer wierzcholka </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="class_draw_figures.html#a0efb97e1a8bc9704d3d5be94245041ba" title="Skladowa Y-owa wspolrzednych wierzcholka. ">GetPointY</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a21a64cb9a1b97273a032faf016d3084b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21a64cb9a1b97273a032faf016d3084b">&#9670;&nbsp;</a></span>m_loadedFigures</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;sf::Drawable*&gt; DrawFigures::m_loadedFigures</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Figury gotowe do wyrysowania. </p>
+<p>Wskazniki znajdujace sie w tym kontenerze to gotowe do wyrysowania figury skonstruowane na podstawie danych zawartych w polu m_loadedfigures_data <br />
+Wszystkie konstruowane obiekty dziedzicza po klasie Drawable, dlatego moga znajdowac sie w jednym kontenerze </p>
+
+</div>
+</div>
+<a id="a5f025a2f7e8b56d91d20cff068914a42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f025a2f7e8b56d91d20cff068914a42">&#9670;&nbsp;</a></span>m_loadedfigures_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;int&gt; &gt; DrawFigures::m_loadedfigures_data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dane wyrysowywanych figur. </p>
+<p>Dane przechowywane w tym dwuwymiarowym wektorze sluza do generowania figur typu Drawable, ktore nastepnie rysowane sa w oknie glownym aplikacji.<br />
+Rozmiar glownego wektora okresla ilosc wczytanych figur, natomiast rozmiar wewnetrznych wektorow zalezy od typu figury (przechowywanej pod indeksem zerowym).<br />
+<br />
+Format danych w poszczegolnych wektorach wyglada nastepujaco (typ podstawowy):<br />
+1 2 3 4 5 6 7 8 9 10 11 12 13</p><ul>
+<li>1: Typ figury</li>
+<li>(2-4): Kolor obramowania (skladowe R, G, B)</li>
+<li>(5-7): Kolor wypelnienia (skladowe R, G, B)</li>
+<li>8: Grubosc obramowania figury (w pikselach)</li>
+<li>9: Przezroczystosc figury <br />
+ 0 - calkowicie przezroczysta <br />
+ 255 - calkowicie nieprzezroczysta</li>
+<li>(10-11): Punkt poczatkowy figury (skladowe X, Y wierzcholka)</li>
+<li>(12-13): Punkt koncowy figury (skladowe X, Y wierzcholka)</li>
+</ul>
+<p>Wyszczegolnione specjalizacje</p><ul>
+<li>Specjalizacja dla figury typu linia (<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a" title="Typy mozliwych do wyrysowania figur. ">FigType</a> LINE)<br />
+Brak przechowywania informacji o kolorze wypelnienia, pozostale indeksy zdekrementowane o 3 (dlugosc wektora skrocona)</li>
+<li>Specjalizacja dla figury typu wielokat (<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a" title="Typy mozliwych do wyrysowania figur. ">FigType</a> POLYGON)<br />
+Dlugosc wektora zalezna od ilosci punktow, pola od 1 do 9 jak w typie podstawowym.<br />
+Pola od 10 dalej to informacje o kolejnych wierzcholkach wielokata.<br />
+Poprawna dlugosc wektora dla wielokata: 9 + 2*n, gdzie n - ilosc wierzcholkow</li>
+<li>Specjalizacja dla figury typu wielokat foremny(<a class="el" href="class_draw_figures.html#abeebe0e80fb875a9eaa6ed251fabe45a" title="Typy mozliwych do wyrysowania figur. ">FigType</a> POLYGONCIRCLE)<br />
+Dlugosc wektora 13. Pola od 1 do 9 analogicznie jak w typie podstawowym.<br />
+Pola 10-11 opisuja wspolrzedne srodka wielokata foremnego<br />
+Pole 12 opisuje promien wielokata, pole 13 - ilosc wierzcholkow </li>
+</ul>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_draw_figures.html">DrawFigures</a></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

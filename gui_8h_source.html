@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projekt z Podstaw Grafiki Komputerowej: Plik źródłowy E:/STUDIA/ProjektGrafika/ProjektGrafika/gui.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projekt z Podstaw Grafiki Komputerowej
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('gui_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">gui.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;DrawFigures.h&quot;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;TGUI/TGUI.hpp&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespace_gui.html">    8</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_gui.html">Gui</a></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_gui_1_1_panel.html">   10</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_gui_1_1_panel.html">Panel</a> {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_gui_1_1_panel.html#ac0279dfb64defaf1662ee1b92350024a">Panel</a>(sf::RenderWindow&amp; window, tgui::Gui&amp; gui, <a class="code" href="class_draw_figures.html">DrawFigures</a>&amp; loadedData);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#ad90d2439868ad851e97c09af3b86c5ab">updatePanel</a>();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a2140841e1d05000da9d3c894fb9fd6e8">leftArrowPressed</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#aa1c98ef26e9349948bb99e25bc38e371">rightArrowPressed</a>();</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a91b6433b055af1b5675271f018973744">upArrowVertexPressed</a>();</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#aea076ed476b57973c7acf7b0355d05bd">downArrowVertexPressed</a>();</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a3dc4431286dc8c97b345efc7836aedd0">updateFigureName</a>();</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a0eb8b777b6eaac922d69483b6a30dc0f">updateOutlineColorInfo</a>();</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#aeb30764c59f9f862e0633a22cb12b299">updateFillColorInfo</a>();</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a082bc0d164e3bc3048e76467c3b07c1c">updateBorderSize</a>();</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#ad5911108f6a0180d8698f96732f84e40">updateOpacity</a>();</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a40056c402f81d82b345836a312b2e03d">updateVertexes</a>();</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a4eca4c2af673d346a661730ed2294001">checkParameterToChange</a>();</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a9ad2b9fa7e4b7f52065c5b4825ae6ebb">refreshButtonPressed</a>();</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a008f2e66036fb0c092d17aea007028c2">upArrowPressed</a>();</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a6264751eb48df8d835be779d66526842">downArrowPressed</a>();</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_gui_1_1_panel.html#a82a54987a0b67dbb9ac7d1017b6bb1e7">saveButtonPressed</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">private</span>:</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        sf::RenderWindow&amp; m_window; </div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        tgui::Gui&amp; m_gui; </div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="class_draw_figures.html">DrawFigures</a>&amp; m_loadedData; </div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        tgui::Theme::Ptr theme = tgui::Theme::create(<span class="stringliteral">&quot;theme/Black.txt&quot;</span>); </div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordtype">int</span> m_current_number; </div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">int</span> m_current_vertex; </div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        </div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordtype">void</span> preparePanel();</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        tgui::EditBox::Ptr changeValues = theme-&gt;load(<span class="stringliteral">&quot;Editbox&quot;</span>); </div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        tgui::ComboBox::Ptr selectParameterToChange = theme-&gt;load(<span class="stringliteral">&quot;ComboBox&quot;</span>); </div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        tgui::Label::Ptr figureNumber = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        tgui::Button::Ptr leftArrow = theme-&gt;load(<span class="stringliteral">&quot;Button&quot;</span>); </div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        tgui::Button::Ptr rightArrow = theme-&gt;load(<span class="stringliteral">&quot;Button&quot;</span>); </div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        tgui::Label::Ptr currentPosition = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        tgui::Label::Ptr changeOrder = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        tgui::Button::Ptr downArrow = theme-&gt;load(<span class="stringliteral">&quot;Button&quot;</span>); </div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        tgui::Button::Ptr upArrow = theme-&gt;load(<span class="stringliteral">&quot;Button&quot;</span>); </div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        tgui::Label::Ptr figureName = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        tgui::Label::Ptr lineColorParameter = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        tgui::Label::Ptr fulfilColorParameter = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        tgui::Label::Ptr borderSizeParameter = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        tgui::Label::Ptr opacityParameter = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        tgui::Label::Ptr vertexesParameter = theme-&gt;load(<span class="stringliteral">&quot;Label&quot;</span>); </div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        tgui::Button::Ptr refreshButton = theme-&gt;load(<span class="stringliteral">&quot;Button&quot;</span>); </div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        tgui::Button::Ptr upArrowVertex = theme-&gt;load(<span class="stringliteral">&quot;Button&quot;</span>); </div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        tgui::Button::Ptr downArrowVertex = theme-&gt;load(<span class="stringliteral">&quot;Button&quot;</span>); </div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        tgui::EditBox::Ptr saveX = theme-&gt;load(<span class="stringliteral">&quot;Editbox&quot;</span>);</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        tgui::EditBox::Ptr saveY = theme-&gt;load(<span class="stringliteral">&quot;Editbox&quot;</span>);</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        tgui::Button::Ptr saveButton = theme-&gt;load(<span class="stringliteral">&quot;Button&quot;</span>); <span class="comment">//&lt;! Przycik ktory umozliwia zapis aktualnego stanu obrazka w pliku myresult.png w katalagu biezacym</span></div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    };</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div><div class="ttc" id="class_draw_figures_html"><div class="ttname"><a href="class_draw_figures.html">DrawFigures</a></div><div class="ttdef"><b>Definition:</b> DrawFigures.h:24</div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a008f2e66036fb0c092d17aea007028c2"><div class="ttname"><a href="class_gui_1_1_panel.html#a008f2e66036fb0c092d17aea007028c2">Gui::Panel::upArrowPressed</a></div><div class="ttdeci">void upArrowPressed()</div><div class="ttdoc">Poruszanie sie po liscie wierzcholkow w gore. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_ad5911108f6a0180d8698f96732f84e40"><div class="ttname"><a href="class_gui_1_1_panel.html#ad5911108f6a0180d8698f96732f84e40">Gui::Panel::updateOpacity</a></div><div class="ttdeci">void updateOpacity()</div><div class="ttdoc">Wypisanie przezroczystoci wybranej figury. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a082bc0d164e3bc3048e76467c3b07c1c"><div class="ttname"><a href="class_gui_1_1_panel.html#a082bc0d164e3bc3048e76467c3b07c1c">Gui::Panel::updateBorderSize</a></div><div class="ttdeci">void updateBorderSize()</div><div class="ttdoc">Wypisanie grubosci obramowania wybranej figury. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_aa1c98ef26e9349948bb99e25bc38e371"><div class="ttname"><a href="class_gui_1_1_panel.html#aa1c98ef26e9349948bb99e25bc38e371">Gui::Panel::rightArrowPressed</a></div><div class="ttdeci">void rightArrowPressed()</div><div class="ttdoc">Zmiana aktualnie obslugiwanej figury na nastepna. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a4eca4c2af673d346a661730ed2294001"><div class="ttname"><a href="class_gui_1_1_panel.html#a4eca4c2af673d346a661730ed2294001">Gui::Panel::checkParameterToChange</a></div><div class="ttdeci">void checkParameterToChange()</div><div class="ttdoc">Obsluga wyboru zmienianego parametru figury. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a82a54987a0b67dbb9ac7d1017b6bb1e7"><div class="ttname"><a href="class_gui_1_1_panel.html#a82a54987a0b67dbb9ac7d1017b6bb1e7">Gui::Panel::saveButtonPressed</a></div><div class="ttdeci">void saveButtonPressed() const</div><div class="ttdoc">Wykonanie zrzutu ekranu wyrysowanych figur. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_aea076ed476b57973c7acf7b0355d05bd"><div class="ttname"><a href="class_gui_1_1_panel.html#aea076ed476b57973c7acf7b0355d05bd">Gui::Panel::downArrowVertexPressed</a></div><div class="ttdeci">void downArrowVertexPressed()</div><div class="ttdoc">Przesuniecie aktualnie obslugiwanej figury jedna warstwe nizej. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a0eb8b777b6eaac922d69483b6a30dc0f"><div class="ttname"><a href="class_gui_1_1_panel.html#a0eb8b777b6eaac922d69483b6a30dc0f">Gui::Panel::updateOutlineColorInfo</a></div><div class="ttdeci">void updateOutlineColorInfo()</div><div class="ttdoc">Wypisanie koloru obramowania wybranej figury. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a9ad2b9fa7e4b7f52065c5b4825ae6ebb"><div class="ttname"><a href="class_gui_1_1_panel.html#a9ad2b9fa7e4b7f52065c5b4825ae6ebb">Gui::Panel::refreshButtonPressed</a></div><div class="ttdeci">void refreshButtonPressed()</div><div class="ttdoc">Zapisanie wprowadzonych do textboxa danych. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html"><div class="ttname"><a href="class_gui_1_1_panel.html">Gui::Panel</a></div><div class="ttdef"><b>Definition:</b> gui.h:10</div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a91b6433b055af1b5675271f018973744"><div class="ttname"><a href="class_gui_1_1_panel.html#a91b6433b055af1b5675271f018973744">Gui::Panel::upArrowVertexPressed</a></div><div class="ttdeci">void upArrowVertexPressed()</div><div class="ttdoc">Przesuniecie aktualnie obslugiwanej figury jedna warstwe wyzej. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_aeb30764c59f9f862e0633a22cb12b299"><div class="ttname"><a href="class_gui_1_1_panel.html#aeb30764c59f9f862e0633a22cb12b299">Gui::Panel::updateFillColorInfo</a></div><div class="ttdeci">void updateFillColorInfo()</div><div class="ttdoc">Wypisanie koloru wypelnienia wybranej figury. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a3dc4431286dc8c97b345efc7836aedd0"><div class="ttname"><a href="class_gui_1_1_panel.html#a3dc4431286dc8c97b345efc7836aedd0">Gui::Panel::updateFigureName</a></div><div class="ttdeci">void updateFigureName()</div><div class="ttdoc">Uaktualnienie wypisywanej nazwy aktualnie obslugiwanej figury. </div></div>
+<div class="ttc" id="namespace_gui_html"><div class="ttname"><a href="namespace_gui.html">Gui</a></div><div class="ttdef"><b>Definition:</b> gui.h:8</div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a40056c402f81d82b345836a312b2e03d"><div class="ttname"><a href="class_gui_1_1_panel.html#a40056c402f81d82b345836a312b2e03d">Gui::Panel::updateVertexes</a></div><div class="ttdeci">void updateVertexes()</div><div class="ttdoc">Wypisanie informacji o wierzcholkach figury. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_ad90d2439868ad851e97c09af3b86c5ab"><div class="ttname"><a href="class_gui_1_1_panel.html#ad90d2439868ad851e97c09af3b86c5ab">Gui::Panel::updatePanel</a></div><div class="ttdeci">void updatePanel()</div><div class="ttdoc">Uaktualnianie interfejsu po kazdej zmianie wartosci. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_ac0279dfb64defaf1662ee1b92350024a"><div class="ttname"><a href="class_gui_1_1_panel.html#ac0279dfb64defaf1662ee1b92350024a">Gui::Panel::Panel</a></div><div class="ttdeci">Panel(sf::RenderWindow &amp;window, tgui::Gui &amp;gui, DrawFigures &amp;loadedData)</div><div class="ttdoc">Konstruktor interfejsu uzytkownika. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a2140841e1d05000da9d3c894fb9fd6e8"><div class="ttname"><a href="class_gui_1_1_panel.html#a2140841e1d05000da9d3c894fb9fd6e8">Gui::Panel::leftArrowPressed</a></div><div class="ttdeci">void leftArrowPressed()</div><div class="ttdoc">Zmiana aktualnie obslugiwanej figury na poprzednia. </div></div>
+<div class="ttc" id="class_gui_1_1_panel_html_a6264751eb48df8d835be779d66526842"><div class="ttname"><a href="class_gui_1_1_panel.html#a6264751eb48df8d835be779d66526842">Gui::Panel::downArrowPressed</a></div><div class="ttdeci">void downArrowPressed()</div><div class="ttdoc">Poruszanie sie po liscie wierzcholkow w dol. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_4c5ed9ad8a7e13ee0e065bd089ed8dd9.html">ProjektGrafika</a></li><li class="navelem"><a class="el" href="dir_66ad3e663c8c79bd3e25ac83f5d8eb1d.html">ProjektGrafika</a></li><li class="navelem"><b>gui.h</b></li>
+    <li class="footer">Wygenerowano przez
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>
