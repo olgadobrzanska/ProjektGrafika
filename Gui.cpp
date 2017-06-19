@@ -18,6 +18,10 @@ void Gui::Panel::preparePanel()
 	loadFromFilename->setTextSize(14);
 	m_gui.add(loadFromFilename, "loadFromFilename");
 
+	tgui::Label::Ptr toolTip = theme->load("ToolTip");
+	toolTip->setText("Demo file: data.txt");
+	loadFromFilename->setToolTip(toolTip);
+
 	tgui::Button::Ptr loadFromSubmit = theme->load("Button");
 	loadFromSubmit->setSize(40, 30);
 	loadFromSubmit->setText("Load");
@@ -153,16 +157,40 @@ void Gui::Panel::preparePanel()
 	downArrowVertex->disable(true);
 	m_gui.add(downArrowVertex, "downArrowVertex");
 
-	saveButton->setSize(110, 30);
+	saveButton->setSize(100, 30);
 	saveButton->setText("Save to file");
-	saveButton->setPosition(45, 560);
+	saveButton->setPosition(90, 555);
 	saveButton->setTextSize(14);
 	saveButton->connect("pressed", &Gui::Panel::saveButtonPressed, this);
 	saveButton->disable(true);
 	m_gui.add(saveButton, "saveButton");
+
+	saveX->setSize(70, 20);
+	saveX->setTextSize(10);
+	saveX->setPosition(10, 550);
+	saveX->setDefaultText("width");
+	m_gui.add(saveX, "saveX");
+
+	saveY->setSize(70, 20);
+	saveY->setTextSize(10);
+	saveY->setPosition(10, 570);
+	saveY->setDefaultText("height");
+	m_gui.add(saveY, "saveY");
+
+
+	tgui::Label::Ptr toolTipSave = theme->load("ToolTip");
+	toolTipSave->setText("Output: myresult.bmp");
+	tgui::ToolTip::setDistanceToMouse({ 30, -8 });
+	tgui::ToolTip::setTimeToDisplay(sf::milliseconds(100));
+	saveButton->setToolTip(toolTipSave);
+
+	tgui::Label::Ptr toolTipSaveX = theme->load("ToolTip");
+	toolTipSaveX->setText("Value between 20 and 20000");
+	saveX->setToolTip(toolTipSaveX);
+	saveY->setToolTip(toolTipSaveX);
 }
 
-void Gui::Panel::updatePanel() const {
+void Gui::Panel::updatePanel() {
 	
 	if (m_loadedData.GetCountOfElements()==0) {
 		if (changeValues->isEnabled())
@@ -181,6 +209,10 @@ void Gui::Panel::updatePanel() const {
 			refreshButton->disable();
 		if (saveButton->isEnabled())
 			saveButton->disable();
+		if (saveX->isEnabled())
+			saveX->disable();
+		if (saveY->isEnabled())
+			saveY->disable();
 		if (upArrowVertex->isEnabled())
 			upArrowVertex->disable();
 		if (downArrowVertex->isEnabled())
@@ -204,6 +236,10 @@ void Gui::Panel::updatePanel() const {
 		refreshButton->enable();
 	if (!saveButton->isEnabled())
 		saveButton->enable();
+	if (!saveX->isEnabled())
+		saveX->enable();
+	if (!saveY->isEnabled())
+		saveY->enable();
 	if (!upArrowVertex->isEnabled())
 		upArrowVertex->enable();
 	if (!downArrowVertex->isEnabled())
@@ -219,9 +255,6 @@ void Gui::Panel::updatePanel() const {
 	updateVertexes();
 	updateFigureName();
 	checkParameterToChange();
-
-	
-
 }
 
 void Gui::Panel::leftArrowPressed() {
@@ -229,6 +262,7 @@ void Gui::Panel::leftArrowPressed() {
 
 		m_current_number--;
 		m_current_vertex = 0;
+		m_loadedData.blinkFigure(m_current_number);
 
 		std::ostringstream ss;
 		ss << m_current_number;
@@ -244,6 +278,7 @@ void Gui::Panel::rightArrowPressed() {
 
 		m_current_number++;
 		m_current_vertex = 0;
+		m_loadedData.blinkFigure(m_current_number);
 
 		std::ostringstream ss;
 		ss << m_current_number;
@@ -308,7 +343,7 @@ void Gui::Panel::downArrowVertexPressed() {
 	}
 }
 
-void Gui::Panel::updateFigureName() const
+void Gui::Panel::updateFigureName()
 {
 	std::string figurename;
 	if (m_loadedData.GetCountOfElements() != 0)
@@ -338,7 +373,8 @@ void Gui::Panel::updateFigureName() const
 	figureName->setText(figurename);
 }
 
-void Gui::Panel::updateOutlineColorInfo() const {
+void Gui::Panel::updateOutlineColorInfo()
+{
 	std::ostringstream ss;
 	ss << "Outline Color: \nR:";
 	ss << m_loadedData.GetOutlineR(m_current_number);
@@ -350,7 +386,8 @@ void Gui::Panel::updateOutlineColorInfo() const {
 	lineColorParameter->setText(tekst);
 }
 
-void Gui::Panel::updateFillColorInfo() const {
+void Gui::Panel::updateFillColorInfo() 
+{
 	std::ostringstream ss;
 	ss << "Fill Color: \nR:";
 	ss << m_loadedData.GetInR(m_current_number);
@@ -362,7 +399,8 @@ void Gui::Panel::updateFillColorInfo() const {
 	fulfilColorParameter->setText(tekst);
 }
 
-void Gui::Panel::updateBorderSize() const {
+void Gui::Panel::updateBorderSize() 
+{
 	std::ostringstream ss;
 	ss << "Border Size: \n";
 	ss << m_loadedData.GetBorderSize(m_current_number);
@@ -370,7 +408,8 @@ void Gui::Panel::updateBorderSize() const {
 	borderSizeParameter->setText(tekst);
 }
 
-void Gui::Panel::updateOpacity() const {
+void Gui::Panel::updateOpacity() 
+{
 	std::ostringstream ss;
 	ss << "Opacity: \n";
 	ss << m_loadedData.GetOpacity(m_current_number);
@@ -378,7 +417,8 @@ void Gui::Panel::updateOpacity() const {
 	opacityParameter->setText(tekst);
 }
 
-void Gui::Panel::updateVertexes() const {
+void Gui::Panel::updateVertexes() 
+{
 	
 	std::ostringstream ss;
 	if (m_loadedData.GetFigureType(m_current_number) == DrawFigures::POLYGONCIRCLE && m_current_vertex == 1)
@@ -394,7 +434,8 @@ void Gui::Panel::updateVertexes() const {
 	vertexesParameter->setText(tekst);
 }
 
-void Gui::Panel::checkParameterToChange() const {
+void Gui::Panel::checkParameterToChange() 
+{
 	
 	if (selectParameterToChange->getSelectedItemIndex() == 0) {
 		changeValues->setDefaultText("R G B");
@@ -421,7 +462,8 @@ void Gui::Panel::checkParameterToChange() const {
 	}
 }
 
-void Gui::Panel::refreshButtonPressed() const {
+void Gui::Panel::refreshButtonPressed() 
+{
 	if (selectParameterToChange->getSelectedItemIndex() == 0) {
 		if (changeValues->getText() != "") {
 			int valueR, valueG, valueB;
@@ -496,14 +538,30 @@ void Gui::Panel::refreshButtonPressed() const {
 
 void Gui::Panel::saveButtonPressed() const
 {
+	std::istringstream issx(saveX->getText()), issy(saveY->getText());
+	int x_size, y_size;
+	issx >> x_size; issy >> y_size;
+	if (!issx || !issy)
+		return;
+
+	if (x_size < 20 || x_size > 20000 || y_size < 20 || y_size > 20000)
+		return;
+
+	using namespace cimg_library;
+
 	sf::Texture texture;
 	sf::Vector2u getWindowSize = m_window.getSize();
 	texture.create(getWindowSize.x, getWindowSize.y);
 	texture.update(m_window);
+
 	sf::Image screenshot = texture.copyToImage();
-	screenshot.saveToFile("myresult.png");
-	texture.loadFromFile("myresult.png", sf::IntRect(200, 0, 999, 599));
+	texture.loadFromImage(screenshot, sf::IntRect(200, 0, 999, 599));
 	screenshot = texture.copyToImage();
-	std::remove("myresult.png");
-	screenshot.saveToFile("myresult.bmp");
+	screenshot.saveToFile("temporary.bmp");
+	CImg<unsigned char> image("temporary.bmp");
+	std::remove("temporary.bmp");
+	image.resize(x_size, y_size);
+	image.save_bmp("myresult.bmp");
+	
+	saveX->setText(""); saveY->setText("");
 }

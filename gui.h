@@ -21,7 +21,7 @@ namespace Gui
 		/**
 		* \brief Uaktualnianie interfejsu po kazdej zmianie wartosci
 		*/
-		void updatePanel() const;
+		void updatePanel();
 
 		/**
 		* \brief Zmiana aktualnie obslugiwanej figury na poprzednia
@@ -46,35 +46,35 @@ namespace Gui
 		/**
 		* \brief Uaktualnienie wypisywanej nazwy aktualnie obslugiwanej figury
 		*/
-		void updateFigureName() const;
+		void updateFigureName();
 
 		/**
 		* \brief Wypisanie koloru obramowania wybranej figury
 		*/
-		void updateOutlineColorInfo() const;
+		void updateOutlineColorInfo();
 
 		/**
 		* \brief Wypisanie koloru wypelnienia wybranej figury
 		*/
-		void updateFillColorInfo() const;
+		void updateFillColorInfo();
 
 		/**
 		* \brief Wypisanie grubosci obramowania wybranej figury
 		* 
 		* W przypadku linii (#DrawFigures.FigType LINE) wypisywana jest grubosc linii
 		*/
-		void updateBorderSize() const;
+		void updateBorderSize();
 
 		/**
 		* \brief Wypisanie przezroczystoci wybranej figury
 		*/
-		void updateOpacity() const;
+		void updateOpacity();
 
 		/**
 		* \brief Wypisanie informacji o wierzcholkach figury
 		* \sa DrawFigures.m_loadedfigures_data
 		*/
-		void updateVertexes() const;
+		void updateVertexes();
 
 		/**
 		* \brief Obsluga wyboru zmienianego parametru figury
@@ -82,7 +82,7 @@ namespace Gui
 		* Na podstawie wyboru w comboboxie generowana jest podpowiedz, w jaki sposob nalezy uzupelnic 
 		* textbox znajdujacy sie ponizej oraz w odpowiedni sposob obslugiwane jest zapisanie ustawien.
 		*/
-		void checkParameterToChange() const;
+		void checkParameterToChange();
 
 		/**
 		* \brief Zapisanie wprowadzonych do textboxa danych
@@ -90,7 +90,7 @@ namespace Gui
 		* Tresc TextBoxa jest kasowana, jesli zapis odbyl sie poprawnie\n
 		* W przeciwnym razie zawartosc textboxa nie jest kasowana.
 		*/
-		void refreshButtonPressed() const;
+		void refreshButtonPressed();
 
 		/**
 		* \brief Poruszanie sie po liscie wierzcholkow w gore
@@ -106,7 +106,10 @@ namespace Gui
 		* \brief Wykonanie zrzutu ekranu wyrysowanych figur
 		* 
 		* Zrzut ekranu jest zapisywany do pliku myresult.bmp w katalogu, w ktorym znajduje 
-		* sie plik wykonywalny.
+		* sie plik wykonywalny.\n
+		* Uzytkownik ma mozliwosc wyboru rozmiaru zapisywanego obrazka, wysokosc/szerokosc 
+		* to wartosci calkowite z przedzialu 20-20000.\n\n
+		* Jest to jedyna funkcja w projekcie korzystajaca z biblioteki CImg.
 		*/
 		void saveButtonPressed() const;
 
@@ -141,6 +144,8 @@ namespace Gui
 		tgui::Button::Ptr refreshButton = theme->load("Button"); //!< Przycisk ktory wprowadza zmiany danego parametru wprowadzonego przez urzytkownika
 		tgui::Button::Ptr upArrowVertex = theme->load("Button"); //!< Przycisk ktory umozilwia odczyt wierzcholka figury o wczesniejszym indeksie
 		tgui::Button::Ptr downArrowVertex = theme->load("Button"); //!< Przycisk ktory umozliwia odczyt wierzcholka figury o kolejnym indeksie
+		tgui::EditBox::Ptr saveX = theme->load("Editbox");
+		tgui::EditBox::Ptr saveY = theme->load("Editbox");
 		tgui::Button::Ptr saveButton = theme->load("Button"); //<! Przycik ktory umozliwia zapis aktualnego stanu obrazka w pliku myresult.png w katalagu biezacym
 	};
 

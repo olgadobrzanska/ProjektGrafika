@@ -8,6 +8,7 @@ DrawFigures::DrawFigures()
 {
 	m_loadedFigures.clear();
 	m_loadedfigures_data.clear();
+	m_countdown_change_figure = 0;
 }
 
 DrawFigures::~DrawFigures()
@@ -19,8 +20,14 @@ DrawFigures::~DrawFigures()
 
 void DrawFigures::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (std::vector<sf::Drawable*>::const_iterator it = m_loadedFigures.begin(); it != m_loadedFigures.end(); ++it)
-		target.draw(**it);		
+	m_countdown_change_figure++;
+	int i = -1;
+	for (std::vector<sf::Drawable*>::const_iterator it = m_loadedFigures.begin(); it != m_loadedFigures.end(); ++it) {
+		i++;
+		if (m_countdown_change_figure < 90 && i == m_blinkingFigure && m_countdown_change_figure%30 < 15)
+			continue;
+		target.draw(**it);
+	}
 }
 
 int DrawFigures::GetFigureType(const int& index) const
@@ -183,6 +190,7 @@ bool DrawFigures::ChangeLayers(const int& layerID, bool goRight)
 		return false;
 	if (layerID == GetCountOfElements() - 1 && goRight)
 		return false;
+	m_blinkingFigure = -1;
 	int secondIndex = (goRight) ? layerID + 1 : layerID - 1;
 	std::swap(m_loadedfigures_data[layerID], m_loadedfigures_data[secondIndex]);
 	std::swap(m_loadedFigures[layerID], m_loadedFigures[secondIndex]);

@@ -17,6 +17,7 @@
 * ### Biblioteki wykorzystane w projekcie:
 * - SFML 2.4.2 32-bit (<a href="https://sfml-dev.org">Link</a>)
 * - TGUI 0.7.4 32-bit (<a href="https://tgui.eu">Link</a>)
+* - CImg 2.0.2 (<a href="http://cimg.eu">Link</a>)
 *
 */
 
@@ -253,6 +254,12 @@ public:
 	 */
 	bool ChangeLayers(const int& layerID, bool goRight);
 
+	/**
+	 * \brief Kontroluje miganie przy zmianie aktualnie obslugiwanej figury
+	 * \param figID ID figury ktora ma migac
+	 */
+	void blinkFigure(const int& figID) { m_blinkingFigure = figID; m_countdown_change_figure = 0; };
+
 protected:
 	/**
 	 *	Wskazniki znajdujace sie w tym kontenerze to gotowe do wyrysowania figury 
@@ -295,6 +302,9 @@ protected:
 private:
 	static int m_xOffset; //!< X-owy Offset (uwzglednienie szerokosci GUI)
 	static int m_yOffset; //!< Y-owy Offset (uwzglednienie obramowania pola do rysowania)
+
+	mutable int m_countdown_change_figure;
+	int m_blinkingFigure=-1;
 
 	/**
 	 * Funkcja sprawdzajaca poprawnosc danych we wczytywanym pliku dla poszczegolnych figur
